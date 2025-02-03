@@ -2,11 +2,7 @@
 
 import { ContentBox } from 'app/page-styles';
 
-import { SW_API } from '@constants';
-
 import { useCharactersContext } from '@hooks';
-
-const randomNumber: number = getRandomNumber(1, 87);
 
 export default function Character() {
     const {
