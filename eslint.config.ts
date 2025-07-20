@@ -1,21 +1,46 @@
-import { type SheriffSettings, sheriff, tseslint } from 'eslint-config-sheriff';
+import js from '@eslint/js';
+import react from 'eslint-plugin-react';
+// @ts-ignore
+import reactHooks from 'eslint-plugin-react-hooks';
+import tseslint from 'typescript-eslint';
 
-const sheriffOptions: SheriffSettings = {
-    react: true,
-    lodash: false,
-    remeda: false,
-    next: true,
-    astro: false,
-    playwright: false,
-    jest: false,
-    vitest: false,
-};
-
-export default tseslint.config(sheriff(sheriffOptions), {
-    rules: {
-        'import/first': 2, // 'import/first' is now enabled everywhere.
+export default [
+    js.configs.recommended,
+    ...tseslint.configs.recommended,
+    {
+        files: ['**/*.ts', '**/*.tsx'],
+        languageOptions: {
+            parser: tseslint.parser,
+            parserOptions: {
+                ecmaVersion: 'latest',
+                sourceType: 'module',
+                ecmaFeatures: {
+                    jsx: true, // ✅ Required for React rules to run
+                },
+            },
+        },
+        plugins: {
+            react: react as any,
+            'react-hooks': reactHooks as any,
+        },
+        rules: {
+            'import/first': 0, // 'import/first' is now enabled everywhere.
+            'react-hooks/exhaustive-deps': 'warn',
+            'react-hooks/rules-of-hooks': 'error',
+            '@typescript-eslint/no-unused-vars': 'warn',
+        },
     },
-});
+];
+
+// export default tseslint.config(eslint.configs.recommended, tseslint.configs.recommended, {
+//     plugins: { 'react-hooks': reactHooks },
+//     rules: {
+//         'import/first': 0, // 'import/first' is now enabled everywhere.
+//         'react-hooks/exhaustive-deps': 'warn',
+//         'react-hooks/rules-of-hooks': 'error',
+//         '@typescript-eslint/no-unused-vars': 'warn',
+//     },
+// });
 
 // import { FlatCompat } from '@eslint/eslintrc';
 // import js from '@eslint/js';
@@ -43,6 +68,8 @@ export default tseslint.config(sheriff(sheriffOptions), {
 //         },
 //         rules: {
 //             'exhaustive-deps': 'warn',
+//             'react-hooks/exhaustive-deps': 'warn',
+//             '@typescript-eslint/switch-exhaustiveness-check': 'warn',
 //             // Optional: add or override any ESLint rules you want here
 //         },
 //     },

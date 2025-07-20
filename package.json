@@ -12,12 +12,15 @@
         "@emotion/react": "^11.14.0",
         "@emotion/styled": "^11.14.0",
         "@splidejs/react-splide": "^0.7.12",
+        "@splidejs/splide": "^4.1.4",
         "@splidejs/splide-extension-auto-scroll": "^0.5.3",
+        "gsap": "^3.13.0",
         "next": "15.0.3",
         "react": "19.0.0-rc-66855b96-20241106",
         "react-dom": "19.0.0-rc-66855b96-20241106"
     },
     "devDependencies": {
+        "@eslint/js": "^9.30.0",
         "@trivago/prettier-plugin-sort-imports": "^5.2.1",
         "@types/eslint__eslintrc": "^2.1.2",
         "@types/node": "^20.17.12",
@@ -27,9 +30,11 @@
         "eslint-config-next": "15.0.3",
         "eslint-config-sheriff": "^25.6.0",
         "eslint-define-config": "^2.1.0",
+        "eslint-plugin-react-hooks": "^5.1.0",
         "jiti": "^2.4.2",
         "prettier": "^3.4.2",
-        "typescript": "^5.7.2"
+        "typescript": "^5.7.2",
+        "typescript-eslint": "^8.35.0"
     },
     "packageManager": "pnpm@9.15.3+sha512.1f79bc245a66eb0b07c5d4d83131240774642caaa86ef7d0434ab47c0d16f66b04e21e0c086eb61e62c77efc4d7f7ec071afad3796af64892fae66509173893a"
 }

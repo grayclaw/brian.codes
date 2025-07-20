@@ -21,14 +21,14 @@ export default function Joke({ randomNumber }: JokeProps) {
 
     return (
         <ContentBox>
-            <h2>Today's Joke</h2>
+            <h2>Today&rsquo;s Joke</h2>
             <p>
                 {a ? 'question: ' : ''}
                 {q}
             </p>
             {a && <p>answer: {a}</p>}
             <br />
-            <p>or if you don't find this one funny</p>
+            <p>or if you don&rsquo;t find this one funny</p>
             <Button onClick={handleJokeChange}>try another joke</Button>
         </ContentBox>
     );

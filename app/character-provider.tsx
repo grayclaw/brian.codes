@@ -7,10 +7,10 @@ import { useFetch } from '@hooks';
 import {
     CharacterContextType,
     CharacterType,
-    HomeWorldType,
-    SpeciesType,
+    // HomeWorldType,
+    // SpeciesType,
     StarShipType,
-    VehicleType,
+    // VehicleType,
 } from '@types';
 
 export const CharactersProviderContext = createContext<CharacterContextType | null>(null);
@@ -28,12 +28,12 @@ export default function CharactersProvider({ value, children }: Provider) {
     const [characterNumber, setCharacterNumber] = useState<number>(0);
     const [currentCharacter, setCurrentCharacter] = useState<CharacterType>(allCharacters[0]);
     const [nextPage, setNextPage] = useState<string>(nextCharacterPage);
-    const [starShips, setStarShips] = useState<StarShipType[]>([]);
-    const [vehicles, setVehicles] = useState([]);
-    const [species, setSpecies] = useState([]);
-    const [homeWorld, setHomeWorld] = useState([]);
+    const [starShips] = useState<StarShipType[]>([]);
+    const [vehicles] = useState([]);
+    const [species] = useState([]);
+    const [homeWorld] = useState([]);
 
-    const { data: characterData, error, get: getCharacters } = useFetch();
+    const { data: characterData, get: getCharacters } = useFetch();
 
     useEffect(() => {
         if (nextPage) {
@@ -70,7 +70,7 @@ export default function CharactersProvider({ value, children }: Provider) {
 
     useEffect(() => {
         setCurrentCharacter(allCharacters[characterNumber]);
-    }, [characterNumber]);
+    }, [allCharacters, characterNumber]);
 
     const newValue = useMemo(() => {
         return {
@@ -102,20 +102,20 @@ export default function CharactersProvider({ value, children }: Provider) {
     );
 }
 
-const fetchUrls = async (urls: string[]) => {
-    try {
-        const fetchPromises = urls.map(async (url) => {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
-            }
-            return response.json();
-        });
+// const fetchUrls = async (urls: string[]) => {
+//     try {
+//         const fetchPromises = urls.map(async (url) => {
+//             const response = await fetch(url);
+//             if (!response.ok) {
+//                 throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+//             }
+//             return response.json();
+//         });
 
-        const results = await Promise.all(fetchPromises);
-        return results;
-    } catch (error) {
-        console.error('Error fetching URLs:', error);
-        throw error;
-    }
-};
+//         const results = await Promise.all(fetchPromises);
+//         return results;
+//     } catch (error) {
+//         console.error('Error fetching URLs:', error);
+//         throw error;
+//     }
+// };

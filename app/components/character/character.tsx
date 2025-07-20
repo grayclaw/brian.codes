@@ -13,11 +13,11 @@ export default function Character() {
             hair_color: hairColor,
             eye_color: eyeColor,
             birth_year: birthYear,
-            gender,
-            homeworld,
-            species,
-            vehicles,
-            starships,
+            // gender,
+            // homeworld,
+            // species,
+            // vehicles,
+            // starships,
         },
     } = useCharactersContext();
 
@@ -45,9 +45,9 @@ export default function Character() {
     );
 }
 
-function getRandomNumber(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+// function getRandomNumber(min: number, max: number) {
+//     return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
 // const [
 //     {
 //         name,
@@ -95,46 +95,46 @@ function getRandomNumber(min: number, max: number) {
 //     url: '',
 // });
 
-const person = {
-    name: 'Luke Skywalker',
-    height: '172',
-    mass: '77',
-    hair_color: 'blond',
-    eye_color: 'blue',
-    birth_year: '19BBY',
-    gender: 'male',
-    homeworld: 'https://swapi.py4e.com/api/planets/1/',
-    species: ['https://swapi.py4e.com/api/species/1/'],
-    vehicles: ['https://swapi.py4e.com/api/vehicles/14/'],
-    starships: ['https://swapi.py4e.com/api/starships/12/'],
-};
-const planet = {
-    name: 'Tatooine',
-    gravity: '1 standard',
-    terrain: 'desert',
-};
-const species = {
-    name: 'Human',
-};
+// const person = {
+//     name: 'Luke Skywalker',
+//     height: '172',
+//     mass: '77',
+//     hair_color: 'blond',
+//     eye_color: 'blue',
+//     birth_year: '19BBY',
+//     gender: 'male',
+//     homeworld: 'https://swapi.py4e.com/api/planets/1/',
+//     species: ['https://swapi.py4e.com/api/species/1/'],
+//     vehicles: ['https://swapi.py4e.com/api/vehicles/14/'],
+//     starships: ['https://swapi.py4e.com/api/starships/12/'],
+// };
+// const planet = {
+//     name: 'Tatooine',
+//     gravity: '1 standard',
+//     terrain: 'desert',
+// };
+// const species = {
+//     name: 'Human',
+// };
 
-const vehicles = {
-    name: 'Snowspeeder',
-    model: 't-47 airspeeder',
-    manufacturer: 'Incom corporation',
-    length: '4.5',
-    max_atmosphering_speed: '650',
-    crew: '2',
-    vehicle_class: 'airspeeder',
-};
+// const vehicles = {
+//     name: 'Snowspeeder',
+//     model: 't-47 airspeeder',
+//     manufacturer: 'Incom corporation',
+//     length: '4.5',
+//     max_atmosphering_speed: '650',
+//     crew: '2',
+//     vehicle_class: 'airspeeder',
+// };
 
-const starShips = {
-    name: 'X-wing',
-    model: 'T-65 X-wing',
-    manufacturer: 'Incom Corporation',
-    length: '12.5',
-    max_atmosphering_speed: '1050',
-    crew: '1',
-    hyperdrive_rating: '1.0',
-    MGLT: '100',
-    starship_class: 'Starfighter',
-};
+// const starShips = {
+//     name: 'X-wing',
+//     model: 'T-65 X-wing',
+//     manufacturer: 'Incom Corporation',
+//     length: '12.5',
+//     max_atmosphering_speed: '1050',
+//     crew: '1',
+//     hyperdrive_rating: '1.0',
+//     MGLT: '100',
+//     starship_class: 'Starfighter',
+// };
