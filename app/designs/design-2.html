@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jedi.dev - Master of Code</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+                background: #000;
+                color: #fff;
+                line-height: 1.6;
+            }
+
+            .nav {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                backdrop-filter: blur(20px);
+                background: rgba(0, 0, 0, 0.8);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                z-index: 1000;
+                padding: 12px 0;
+            }
+
+            .nav-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+                font-weight: 700;
+                background: linear-gradient(135deg, #0099ff, #00ff99);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 40px;
+                list-style: none;
+            }
+
+            .nav-links a {
+                color: rgba(255, 255, 255, 0.8);
+                text-decoration: none;
+                font-weight: 400;
+                transition: color 0.3s ease;
+            }
+
+            .nav-links a:hover {
+                color: #0099ff;
+            }
+
+            .hero {
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(
+                    circle at 50% 50%,
+                    rgba(0, 153, 255, 0.1) 0%,
+                    transparent 50%
+                );
+                animation: rotate 20s linear infinite;
+            }
+
+            @keyframes rotate {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .hero-content {
+                text-align: center;
+                max-width: 900px;
+                padding: 0 20px;
+                z-index: 2;
+            }
+
+            .hero-title {
+                font-size: clamp(4rem, 10vw, 8rem);
+                font-weight: 800;
+                margin-bottom: 20px;
+                background: linear-gradient(135deg, #fff 0%, #0099ff 50%, #00ff99 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                animation: fadeInScale 1.2s ease-out;
+            }
+
+            @keyframes fadeInScale {
+                from {
+                    opacity: 0;
+                    transform: scale(0.8);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            .hero-subtitle {
+                font-size: clamp(1.5rem, 4vw, 2.5rem);
+                font-weight: 300;
+                color: rgba(255, 255, 255, 0.7);
+                margin-bottom: 40px;
+                animation: fadeInUp 1.2s ease-out 0.3s both;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .hero-cta {
+                animation: fadeInUp 1.2s ease-out 0.6s both;
+            }
+
+            .btn-primary {
+                background: linear-gradient(135deg, #0099ff, #0077cc);
+                border: none;
+                padding: 18px 36px;
+                border-radius: 12px;
+                color: white;
+                font-size: 1.1rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                display: inline-block;
+                margin: 0 8px;
+            }
+
+            .btn-secondary {
+                background: transparent;
+                border: 2px solid rgba(255, 255, 255, 0.3);
+                padding: 16px 34px;
+                border-radius: 12px;
+                color: white;
+                font-size: 1.1rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-decoration: none;
+                display: inline-block;
+                margin: 0 8px;
+            }
+
+            .btn-primary:hover {
+                background: linear-gradient(135deg, #00aaff, #0088dd);
+                transform: translateY(-2px);
+                box-shadow: 0 15px 30px rgba(0, 153, 255, 0.4);
+            }
+
+            .btn-secondary:hover {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.5);
+            }
+
+            .section {
+                padding: 120px 0;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .section-header {
+                text-align: center;
+                margin-bottom: 80px;
+            }
+
+            .section-title {
+                font-size: clamp(3rem, 7vw, 5rem);
+                font-weight: 700;
+                margin-bottom: 20px;
+                background: linear-gradient(135deg, #fff, #999);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .section-description {
+                font-size: 1.3rem;
+                color: rgba(255, 255, 255, 0.6);
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .features-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 60px;
+                margin-bottom: 100px;
+            }
+
+            .feature-card {
+                text-align: center;
+                padding: 40px 20px;
+                background: linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.05),
+                    rgba(255, 255, 255, 0.02)
+                );
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 24px;
+                backdrop-filter: blur(10px);
+                transition: all 0.4s ease;
+            }
+
+            .feature-card:hover {
+                transform: translateY(-8px);
+                background: linear-gradient(
+                    145deg,
+                    rgba(0, 153, 255, 0.1),
+                    rgba(0, 255, 153, 0.05)
+                );
+                border-color: rgba(0, 153, 255, 0.3);
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            }
+
+            .feature-icon {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 24px;
+                background: linear-gradient(135deg, #0099ff, #00ff99);
+                border-radius: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2rem;
+            }
+
+            .feature-title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin-bottom: 16px;
+                color: #fff;
+            }
+
+            .feature-description {
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 1rem;
+            }
+
+            .showcase {
+                background: linear-gradient(180deg, #0a0a0a, #000);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .project-showcase {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 80px;
+                align-items: center;
+                margin-bottom: 100px;
+            }
+
+            .project-showcase:nth-child(even) .project-content {
+                order: 2;
+            }
+
+            .project-showcase:nth-child(even) .project-visual {
+                order: 1;
+            }
+
+            .project-content h3 {
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin-bottom: 20px;
+                background: linear-gradient(135deg, #0099ff, #00ff99);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .project-content p {
+                font-size: 1.2rem;
+                color: rgba(255, 255, 255, 0.8);
+                margin-bottom: 30px;
+                line-height: 1.6;
+            }
+
+            .project-visual {
+                height: 300px;
+                background: linear-gradient(135deg, rgba(0, 153, 255, 0.2), rgba(0, 255, 153, 0.1));
+                border-radius: 20px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 4rem;
+                backdrop-filter: blur(10px);
+            }
+
+            .tech-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .tech-item {
+                padding: 8px 16px;
+                background: rgba(0, 153, 255, 0.2);
+                border: 1px solid rgba(0, 153, 255, 0.4);
+                border-radius: 20px;
+                font-size: 0.9rem;
+                color: #0099ff;
+                font-weight: 500;
+            }
+
+            @media (max-width: 768px) {
+                .nav-links {
+                    display: none;
+                }
+
+                .project-showcase {
+                    grid-template-columns: 1fr;
+                    gap: 40px;
+                }
+
+                .project-showcase:nth-child(even) .project-content,
+                .project-showcase:nth-child(even) .project-visual {
+                    order: unset;
+                }
+
+                .hero-cta {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="nav">
+            <div class="nav-content">
+                <div class="logo">Jedi.dev</div>
+                <ul class="nav-links">
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Code Master</h1>
+                <p class="hero-subtitle">Bringing balance to the force of technology</p>
+                <div class="hero-cta">
+                    <a href="#work" class="btn-primary">View My Work</a>
+                    <a href="#contact" class="btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Force Powers</h2>
+                    <p class="section-description">
+                        Years of training have honed these specialized abilities in the art of
+                        digital creation
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3 class="feature-title">Lightning Fast</h3>
+                        <p class="feature-description">
+                            Optimized performance with modern frameworks and cutting-edge build
+                            tools that deliver exceptional user experiences
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3 class="feature-title">Precision Focus</h3>
+                        <p class="feature-description">
+                            Pixel-perfect implementations with meticulous attention to design
+                            details and responsive layouts across all devices
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🌌</div>
+                        <h3 class="feature-title">Scalable Architecture</h3>
+                        <p class="feature-description">
+                            Enterprise-grade solutions built with maintainable code structures that
+                            grow with your galactic empire
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section showcase" id="work">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-description">
+                        A collection of applications that demonstrate mastery across multiple
+                        domains
+                    </p>
+                </div>
+
+                <div class="project-showcase">
+                    <div class="project-content">
+                        <h3>HoloNet Interface</h3>
+                        <p>
+                            A real-time communication platform connecting beings across the galaxy.
+                            Features end-to-end encryption, holographic video calls, and instant
+                            translation between thousands of languages.
+                        </p>
+                        <div class="tech-list">
+                            <span class="tech-item">React</span>
+                            <span class="tech-item">WebRTC</span>
+                            <span class="tech-item">Socket.io</span>
+                            <span class="tech-item">PostgreSQL</span>
+                        </div>
+                    </div>
+                    <div class="project-visual">📡</div>
+                </div>
+
+                <div class="project-showcase">
+                    <div class="project-content">
+                        <h3>Death Star Analytics</h3>
+                        <p>
+                            Advanced data visualization dashboard for monitoring fleet movements and
+                            resource allocation. Processes millions of data points in real-time with
+                            interactive 3D galaxy maps.
+                        </p>
+                        <div class="tech-list">
+                            <span class="tech-item">D3.js</span>
+                            <span class="tech-item">Three.js</span>
+                            <span class="tech-item">Python</span>
+                            <span class="tech-item">TensorFlow</span>
+                        </div>
+                    </div>
+                    <div class="project-visual">🗲</div>
+                </div>
+
+                <div class="project-showcase">
+                    <div class="project-content">
+                        <h3>Jedi Training Simulator</h3>
+                        <p>
+                            Immersive VR experience for Force-sensitive individuals to practice
+                            lightsaber combat and meditation techniques. Features physics-based
+                            combat and biometric feedback integration.
+                        </p>
+                        <div class="tech-list">
+                            <span class="tech-item">Unity</span>
+                            <span class="tech-item">C#</span>
+                            <span class="tech-item">VR SDK</span>
+                            <span class="tech-item">Machine Learning</span>
+                        </div>
+                    </div>
+                    <div class="project-visual">⚔️</div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start',
+                        });
+                    }
+                });
+            });
+
+            // Parallax effect for hero
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.hero::before');
+                const hero = document.querySelector('.hero');
+
+                if (scrolled < hero.offsetHeight) {
+                    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+            });
+
+            // Animate feature cards on scroll
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px',
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Initialize animations
+            document.addEventListener('DOMContentLoaded', () => {
+                const animatedElements = document.querySelectorAll(
+                    '.feature-card, .project-showcase',
+                );
+
+                animatedElements.forEach((element, index) => {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(50px)';
+                    element.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
+                    observer.observe(element);
+                });
+            });
+        </script>
+    </body>
+</html>

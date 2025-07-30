@@ -1,82 +1,92 @@
 'use client';
 
-import Link from 'next/link';
-
 import styled from '@emotion/styled';
 
-export const Body = styled.div`
-    background-color: black;
-    background-image: url('https://t3.ftcdn.net/jpg/06/79/34/38/360_F_679343861_GSs8KaWbPgvsNDhyesQeZQBrjs5fcv3I.jpg');
-    background-repeat: repeat;
-    color: yellow;
-    font-family: var(--font-family);
-    font-weight: 500;
-    margin: 0;
-    min-height: 100vh;
-    text-align: center;
-`;
-
-export const Button = styled.button`
-    all: unset;
-    border: 1px solid yellow;
-    border-radius: 4px;
+export const CtaButton = styled.a`
+    background: linear-gradient(135deg, #0071e3, #005bb5);
+    border-radius: 30px;
+    border: none;
+    color: #fff;
     cursor: pointer;
-    margin: 16px 0;
-    padding: 8px 16px;
-`;
-
-export const ContentBox = styled.div`
-    background-color: rgba(0, 0, 0, 0.8);
-    border: 3px solid yellow;
-    font-size: var(--font-size-md);
-    margin: 20px auto 32px;
-    max-width: 600px;
-    padding: 20px;
-`;
-
-export const Footer = styled.footer`
-    font-size: var(--font-size-sm);
+    display: inline-block;
+    font-size: 18px;
     font-weight: 500;
-    margin-top: 50px;
-`;
-
-export const RoutingLink = styled(Link)`
-    color: cyan;
+    padding: 16px 40px;
     text-decoration: none;
+    transition: all 0.3s ease;
 
     &:hover {
-        text-decoration: underline;
+        background: linear-gradient(135deg, #0077ed, #0061c2);
+        box-shadow: 0 20px 40px rgba(0, 113, 227, 0.3);
+        transform: translateY(-2px);
     }
 `;
 
-export const Title = styled.h1`
-    font-size: 40px;
-    margin-top: 20px;
-    text-shadow: 2px 2px 5px red;
-`;
-
-export const ScrollingText = styled.div`
-    box-sizing: border-box;
-    color: yellow;
-    display: block;
+export const Hero = styled.section`
+    align-items: center;
+    background: radial-gradient(ellipse at center, #1a1a2e 0%, #000 70%);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
     overflow: hidden;
-    padding: 10px 0;
     position: relative;
-    white-space: nowrap;
-    width: 100%;
+
+    h1 {
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 700;
+        background: linear-gradient(135deg, #00d4ff, #0099cc, #004466);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+    }
 `;
 
-export const ScrollingSpan = styled.span`
-    animation: scroll 20s linear infinite;
-    display: inline-block;
-    font-size: 40px;
-    padding-left: 100%;
-    @keyframes scroll {
-        from {
-            transform: translateX(0);
-        }
+export const HeroContent = styled.div`
+    animation: fadeInUp 1.5s ease-out 0.5s forwards;
+    opacity: 0;
+    text-align: center;
+    transform: translateY(50px);
+    z-index: 2;
+
+    @keyframes fadeInUp {
         to {
-            transform: translateX(-100%);
+            transform: translateY(0);
+            opacity: 1;
         }
     }
+`;
+
+export const StarStyles = styled.div`
+    animation: pulse 2s infinite;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+
+    @keyframes pulse {
+        0%,
+        100% {
+            opacity: 0.3;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
+`;
+
+export const StarfieldStyles = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+`;
+
+export const Subtitle = styled.p`
+    color: #a0a0a0;
+    font-size: clamp(18px, 3vw, 32px);
+    font-weight: 300;
+    margin-bottom: 32px;
 `;
