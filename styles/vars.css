@@ -13,6 +13,9 @@
     --black: #252525;
     --pure-black: #000000;
 
+    /* star wars yellow */
+    --yellow-100: #ffe81f;
+
     /* Fonts Sizes */
     --font-size-xs: 14px;
     --font-size-sm: 16px;
@@ -22,5 +25,5 @@
     --font-size-xxl: 32px;
 
     /* Font Family */
-    --font-family: 'Orbitron', 'Roboto Mono', 'Courier New', monospace;
+    --font-family: Impact, 'Arial Black', Gadget, sans-serif, monospace;
 }

@@ -30,16 +30,16 @@ const buttonStyles = `
 `;
 
 export const ContainerStyles = styled.div<ContainerProps>`
-    background-color: black;
-    color: #ffe81f;
+    background-color: var(--pure-black);
+    color: var(--yellow-100);
     font-family: Impact, 'Arial Black', Gadget, sans-serif, monospace;
     overflow: hidden;
     position: relative;
 
     transition:
-        max-height 1s ease,
-        opacity 1s ease,
-        padding 1s ease;
+        max-height 3s ease,
+        opacity 2.5s ease,
+        padding 2.5s ease;
 
     ${({ shouldHide }) =>
         shouldHide
@@ -102,11 +102,11 @@ export const ParagraphStyles = styled.p`
 
 export const ResetButtonStyles = styled.button`
     ${buttonStyles};
-    background-color: #4b5563;
+    background-color: var(--gray-900);
     color: white;
 
     &:hover {
-        background-color: #6b7280;
+        background-color: var(--gray-700);
     }
 `;
 
@@ -124,11 +124,11 @@ export const StarfieldStyles = styled.div`
 
 export const StartButtonStyles = styled.button`
     ${buttonStyles};
-    background-color: #ffe81f;
-    color: black;
+    background-color: var(--yellow-100);
+    color: var(--pure-black);
 
     &:hover {
-        background-color: #ffe81f;
+        background-color: var(--yellow-100);
     }
 `;
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useProjectCardObserver } from '@hooks/useProjectCardObserver';
+import { useProjectCardObserver } from '@hooks';
 
 import {
     ProjectCard,

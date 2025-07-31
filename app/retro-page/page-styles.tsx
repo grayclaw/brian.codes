@@ -5,10 +5,10 @@ import Link from 'next/link';
 import styled from '@emotion/styled';
 
 export const Body = styled.div`
-    background-color: black;
+    background-color: var(--black);
     background-image: url('https://t3.ftcdn.net/jpg/06/79/34/38/360_F_679343861_GSs8KaWbPgvsNDhyesQeZQBrjs5fcv3I.jpg');
     background-repeat: repeat;
-    color: yellow;
+    color: var(--yellow-100);
     font-family: var(--font-family);
     font-weight: 500;
     margin: 0;
@@ -18,7 +18,7 @@ export const Body = styled.div`
 
 export const Button = styled.button`
     all: unset;
-    border: 1px solid yellow;
+    border: 1px solid var(--yellow-100);
     border-radius: 4px;
     cursor: pointer;
     margin: 16px 0;
@@ -27,7 +27,7 @@ export const Button = styled.button`
 
 export const ContentBox = styled.div`
     background-color: rgba(0, 0, 0, 0.8);
-    border: 3px solid yellow;
+    border: 3px solid var(--yellow-100);
     font-size: var(--font-size-md);
     margin: 20px auto 32px;
     max-width: 600px;
@@ -57,7 +57,7 @@ export const Title = styled.h1`
 
 export const ScrollingText = styled.div`
     box-sizing: border-box;
-    color: yellow;
+    color: var(--yellow-100);
     display: block;
     overflow: hidden;
     padding: 10px 0;

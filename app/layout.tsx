@@ -1,18 +1,25 @@
-// const geistSans = localFont({
-//     src: '../public/fonts/GeistVF.woff',
-//     variable: '--font-geist-sans',
-//     weight: '100 900',
-// });
-// const geistMono = localFont({
-//     src: '../public/fonts/GeistMonoVF.woff',
-//     variable: '--font-geist-mono',
-//     weight: '100 900',
-// });
+// app/layout.tsx
+import { PURE_BLACK } from '@constants';
 
-export default function RootLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
-    return children;
+import '../styles/globals.css';
+import '../styles/vars.css';
+
+export const metadata = {
+    title: 'Star Wars Fan Page',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <html lang="en">
+            <head>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+                    rel="stylesheet"
+                />
+            </head>
+            <body style={{ margin: '0', background: PURE_BLACK }}>{children}</body>
+        </html>
+    );
 }

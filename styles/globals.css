@@ -22,7 +22,7 @@ body {
     background-repeat: repeat;
     background-color: black;
     color: yellow;
-    font-family: var(--font-family);
+    font-family: Impact, 'Arial Black', Gadget, sans-serif, monospace;
     margin: 0;
     text-align: center;
 }
@@ -31,11 +31,6 @@ body {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-}
-
-h1 {
-    text-shadow: 2px 2px 5px red; /* Glowing effect */
-    margin-top: 20px;
 }
 
 a {

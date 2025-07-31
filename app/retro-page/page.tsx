@@ -1,20 +1,15 @@
 import type { Metadata } from 'next';
-import Head from 'next/head';
 import Image from 'next/image';
 
-import { BLACK, SW_API } from '@constants';
+import { ButtonCarousel, Character } from '@components';
+
+import { SW_API } from '@constants';
 
 import { CharacterType } from '@types';
 
-// import localFont from 'next/font/local';
-
 import { getRandomNumber } from '@utils';
 
-import '../styles/globals.css';
-import '../styles/vars.css';
 import CharacterProvider from './character-provider';
-import ButtonCarousel from './components/button-carousel/button-carousel';
-import Character from './components/character/character';
 import Joke from './joke';
 import {
     Body,
@@ -49,60 +44,44 @@ export default async function Home() {
     }
 
     return (
-        <html lang="en">
-            <Head>
-                <meta charSet="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <title>Star Wars Fan Page</title>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-                    rel="stylesheet"
-                />
-            </Head>
-            <body style={{ margin: '0', background: BLACK }}>
-                <CharacterProvider value={{ characters, nextCharacterPage }}>
-                    <Body>
-                        <Title>Welcome to my retro homepage!</Title>
-                        <ScrollingText>
-                            <ScrollingSpan>
-                                &ldquo;A long time ago in a galaxy far, far away...&rdquo; — Welcome
-                                to the ultimate Star Wars fan page!
-                            </ScrollingSpan>
-                        </ScrollingText>
-                        <ContentBox>
-                            <h2>Latest News</h2>
-                            <p>
-                                The Empire is expanding! Stay tuned for the next adventure in a
-                                galaxy far, far away.
-                            </p>
-                        </ContentBox>
-                        <ContentBox>
-                            <h2>Choose Your Side</h2>
-                            <p>
-                                Will you join the{' '}
-                                <RoutingLink href="/light-side">Rebellion</RoutingLink>, or embrace
-                                the <RoutingLink href="/dark-side">Dark&nbsp;Side?</RoutingLink>
-                                new homepage <RoutingLink href="/designs">home depot</RoutingLink>
-                            </p>
-                        </ContentBox>
-                        <Joke randomNumber={jokeNum} />
-                        <ContentBox>
-                            <Image
-                                alt="Luke Skywalker & Darth Vader"
-                                height={300}
-                                src="https://art.pixilart.com/5990002c63e1151.png"
-                                style={{ height: '100%', width: '100%' }}
-                                width={400}
-                            />
-                        </ContentBox>
-                        <ButtonCarousel />
-                        <Character />
-                        <Footer>May the Force be with you! &copy; 1999 Star Wars Fan Club</Footer>
-                    </Body>
-                </CharacterProvider>
-            </body>
-        </html>
+        <CharacterProvider value={{ characters, nextCharacterPage }}>
+            <Body>
+                <Title>Welcome to my retro homepage!</Title>
+                <ScrollingText>
+                    <ScrollingSpan>
+                        &ldquo;A long time ago in a galaxy far, far away...&rdquo; — Welcome to the
+                        ultimate Star Wars fan page!
+                    </ScrollingSpan>
+                </ScrollingText>
+                <ContentBox>
+                    <h2>Latest News</h2>
+                    <p>
+                        The Empire is expanding! Stay tuned for the next adventure in a galaxy far,
+                        far away.
+                    </p>
+                </ContentBox>
+                <ContentBox>
+                    <h2>Choose Your Side</h2>
+                    <p>
+                        Will you join the <RoutingLink href="/light-side">Rebellion</RoutingLink>,
+                        or embrace the <RoutingLink href="/dark-side">Dark&nbsp;Side?</RoutingLink>
+                        new homepage <RoutingLink href="/designs">home depot</RoutingLink>
+                    </p>
+                </ContentBox>
+                <Joke randomNumber={jokeNum} />
+                <ContentBox>
+                    <Image
+                        alt="Luke Skywalker & Darth Vader"
+                        height={300}
+                        src="https://art.pixilart.com/5990002c63e1151.png"
+                        style={{ height: '100%', width: '100%' }}
+                        width={400}
+                    />
+                </ContentBox>
+                <ButtonCarousel />
+                <Character />
+                <Footer>May the Force be with you! &copy; 1999 Star Wars Fan Club</Footer>
+            </Body>
+        </CharacterProvider>
     );
 }

@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-export function useProjectCardObserver() {
+export default function useProjectCardObserver() {
     useEffect(() => {
         const observerOptions = {
             threshold: 0.1,
