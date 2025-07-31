@@ -1,0 +1,87 @@
+🎯 Objectives Tracker
+	•	Current round objective
+	•	Completed objectives (Empire & Rebellion)
+	•	Progression bar or timeline of objectives
+	•	Card previews or scanned versions
+
+🛠️ Build Queue Manager
+	•	Per-system build queues for Empire/Rebellion
+	•	Timer countdown or turn-based queue display
+	•	Units being built + ETA (round number)
+	•	Filtering by unit type (space/ground/leader)
+
+🪐 Planet Control Tracker
+	•	Interactive map showing planet control (Empire / Rebellion / Neutral)
+	•	Icons for loyalty, sabotage, subjugation
+	•	Tooltips showing resources, loyalty status, known missions
+
+🧠 Leader Assignment Board
+	•	Drag-and-drop interface for assigning leaders to missions
+	•	Highlighting restricted leaders (captured, on cooldown, wounded)
+	•	Real-time validation if a leader is already assigned
+
+🎲 Dice Roller / Combat Tracker
+	•	Custom dice roller for space and ground battles
+	•	Dice result log with reroll mechanic
+	•	Hit/cancel/critical count automation
+	•	Casualty manager with unit icons
+
+🚀 Mission Planning
+	•	View current mission cards (Empire/Rebellion)
+	•	Assign leaders to face-off with alerts for sabotage/contested missions
+	•	Notes field per mission to remind of outcomes
+
+🔍 Probe Droid Tracker
+	•	Known probe droid results (planets not Rebel base)
+	•	Deduction tracker: filter down remaining possible base planets
+	•	Optional “AI Deduction Mode” for helper logic
+
+⸻
+
+🧑‍🚀 Immersive & Thematic Touches
+
+🎬 Intro Crawl Generator
+	•	A text crawl of current game state (“Rebel base discovered on Nal Hutta…”)
+	•	Star Wars theme music + crawl animation on launch
+
+📡 Holonet Updates
+	•	A feed or ticker-style update log (“The Death Star is operational!” or “Sabotage on Corellia!”)
+	•	Could include quotes or lore references
+
+🧾 Turn Log / Journal
+	•	Chronological log of major events, player actions
+	•	Optional tagging of actions (“mission”, “combat”, “movement”)
+	•	Markdown support for notes!
+
+🌌 Thematic UI/UX
+	•	Empire vs Rebellion UI modes (color themes, fonts like Aurebesh)
+	•	Lightsaber cursor / hover SFX / starfield backgrounds
+	•	Star Wars font for headings (like Star Jedi or SF Distant Galaxy)
+
+⸻
+
+📊 Advanced Features (Optional for V2+)
+
+🧮 Win Probability Estimator
+	•	Based on units, missions, and remaining objective cards
+	•	Monte Carlo simulation (if you’re feelin’ spicy)
+
+🧠 AI Assistant (Rebellion AI or Empire AI)
+	•	If solo playing or want a third brain, show AI-suggested actions
+	•	Weighted decision making for base placement or mission resolution
+
+☁️ Save/Load Game State
+	•	Persist game progress
+	•	Shareable link or local storage
+	•	Optional JSON import/export
+
+⸻
+
+🛠️ Tech Suggestions
+
+You could build it using:
+	•	Next.js (for routing/pages)
+	•	Tailwind CSS (clean theming, Star Wars dark UI vibes)
+	•	Framer Motion (for transitions and crawl effects)
+	•	zustand or jotai (for global game state)
+	•	Canvas/WebGL (for interactive galaxy maps)

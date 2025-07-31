@@ -52,7 +52,7 @@ export const ProjectGrid = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     margin-top: 80px;
 
-    projectCard projectIcon star techStack techTag @media (max-width: 768px) {
+    @media (max-width: 768px) {
         grid-template-columns: 1fr;
     }
 `;

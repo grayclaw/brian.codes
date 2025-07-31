@@ -1,24 +1,14 @@
 {
     "compilerOptions": {
-        "target": "ES2017",
-        "lib": ["dom", "dom.iterable", "esnext"],
         "allowJs": true,
-        "skipLibCheck": true,
-        "strict": true,
-        "noEmit": true,
         "esModuleInterop": true,
-        "module": "esnext",
-        "moduleResolution": "bundler",
-        "resolveJsonModule": true,
+        "incremental": true,
         "isolatedModules": true,
         "jsx": "preserve",
-        "incremental": true,
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ],
-        "baseUrl": ".", // Set the base directory to the root of the project
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "noEmit": true,
         "paths": {
             "@constants": ["./constants"],
             "@hooks": ["./hooks"],
@@ -26,8 +16,17 @@
             "@types": ["./types"],
             "@utils": ["./utils"],
             "@utils/*": ["./utils/*"]
-        }
+        },
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ],
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "ES2017"
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "eslint.config.ts"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
     "exclude": ["node_modules"]
 }
