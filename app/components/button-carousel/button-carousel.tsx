@@ -4,11 +4,12 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 import '@splidejs/splide/dist/css/splide.min.css';
-import { Button } from 'app/page-styles';
 
 import { useCharactersContext } from '@hooks';
 
 import { CharacterType } from '@types';
+
+import { Button } from '../../retro-page/page-styles';
 
 export default function ButtonCarousel() {
     const { allCharacters, setCharacterNumber } = useCharactersContext();

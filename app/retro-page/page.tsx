@@ -65,7 +65,7 @@ export default async function Home() {
                     <p>
                         Will you join the <RoutingLink href="/light-side">Rebellion</RoutingLink>,
                         or embrace the <RoutingLink href="/dark-side">Dark&nbsp;Side?</RoutingLink>
-                        new homepage <RoutingLink href="/designs">home depot</RoutingLink>
+                        new homepage <RoutingLink href="/">Home page</RoutingLink>
                     </p>
                 </ContentBox>
                 <Joke randomNumber={jokeNum} />

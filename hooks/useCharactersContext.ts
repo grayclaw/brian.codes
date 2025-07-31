@@ -1,7 +1,8 @@
-import { CharactersProviderContext } from 'app/character-provider';
 import { useContext } from 'react';
 
 import { CharacterContextType } from '@types';
+
+import { CharactersProviderContext } from '../app/retro-page/character-provider';
 
 export default function useCharactersContext(): CharacterContextType {
     const context = useContext(CharactersProviderContext);

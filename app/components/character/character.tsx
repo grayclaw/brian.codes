@@ -1,8 +1,8 @@
 'use client';
 
-import { ContentBox } from 'app/page-styles';
-
 import { useCharactersContext } from '@hooks';
+
+import { ContentBox } from '../../retro-page/page-styles';
 
 export default function Character() {
     const {

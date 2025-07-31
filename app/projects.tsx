@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 import { useProjectCardObserver } from '@hooks';
 
 import {
@@ -54,20 +56,23 @@ export default function Projects() {
                     </TechStack>
                 </ProjectCard>
 
-                <ProjectCard className="project-card">
-                    <ProjectIcon>🌌</ProjectIcon>
-                    <h3>Galactic Trade Network</h3>
-                    <p>
-                        A decentralized marketplace for trading rare artifacts and resources between
-                        star systems. Implements blockchain technology for secure transactions.
-                    </p>
-                    <TechStack>
-                        <TechTag>Blockchain</TechTag>
-                        <TechTag>Web3</TechTag>
-                        <TechTag>Solidity</TechTag>
-                        <TechTag>Next.js</TechTag>
-                    </TechStack>
-                </ProjectCard>
+                <Link href="/retro-page">
+                    <ProjectCard className="project-card">
+                        <ProjectIcon>🌌</ProjectIcon>
+                        <h3>Galactic Trade Network</h3>
+                        <p>
+                            A decentralized marketplace for trading rare artifacts and resources
+                            between star systems. Implements blockchain technology for secure
+                            transactions.
+                        </p>
+                        <TechStack>
+                            <TechTag>Blockchain</TechTag>
+                            <TechTag>Web3</TechTag>
+                            <TechTag>Solidity</TechTag>
+                            <TechTag>Next.js</TechTag>
+                        </TechStack>
+                    </ProjectCard>
+                </Link>
 
                 <ProjectCard className="project-card">
                     <ProjectIcon>🤖</ProjectIcon>

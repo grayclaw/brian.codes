@@ -1,10 +1,10 @@
 'use client';
 
-import jokes from 'public/jokes';
 import { useState } from 'react';
 
 import { getRandomNumber } from '@utils';
 
+import jokes from '../../public/jokes';
 import { Button, ContentBox } from './page-styles';
 
 interface JokeProps {
