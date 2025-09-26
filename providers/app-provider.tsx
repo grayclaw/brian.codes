@@ -20,7 +20,7 @@ interface Provider {
     children: ReactElement[] | ReactElement;
 }
 
-export default function CharactersProvider({ value, children }: Provider) {
+export default function AppProvider({ value, children }: Provider) {
     const { characters, nextCharacterPage } = value;
     const [allCharacters, setAllCharacters] = useState<CharacterType[]>(() => [
         ...characters.map((char, index) => ({ ...char, index })),
@@ -93,7 +93,6 @@ export default function CharactersProvider({ value, children }: Provider) {
         species,
         homeWorld,
     ]);
-    console.log(`newValue:`, newValue);
 
     return (
         <CharactersProviderContext.Provider value={newValue}>

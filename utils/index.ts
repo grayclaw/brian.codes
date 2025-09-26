@@ -1,1 +1,2 @@
-export { default as getRandomNumber } from './getRandomNumber';
+export { getRandomNumber, randomFiveDigit } from './randomNumbers';
+export { toTitleCase } from './toTitleCase';
