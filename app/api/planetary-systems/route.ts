@@ -28,7 +28,13 @@ async function mergePlanetSystemData(
 
         const XLSX = await import('xlsx');
         const planetsBuffer = fs.readFileSync(planetsFilePath);
+        // I don't know if this has a copyright but want to make sure to give credit
+        // SPECIAL THANKS for the file from
+        // https://docs.google.com/spreadsheets/d/19zafALbE-mchYDKZgkJR-kmxrt2_KY57FS7tzkQSMEE/edit?pli=1&gid=1601642765#gid=1601642765
         const systemsBuffer = fs.readFileSync(systemsFilePath);
+        // TM & © Lucasfilm Ltd. All Rights Reserved
+        // SPECIAL THANKS for the file from
+        // https://cdnvideo.dolimg.com/cdn_assets/ff2066584bf86e5376fdfc3b26f0479b8795c403.pdf
         const planetsWorkbook = XLSX.read(planetsBuffer, { type: 'buffer' });
         const systemsWorkbook = XLSX.read(systemsBuffer, { type: 'buffer' });
 

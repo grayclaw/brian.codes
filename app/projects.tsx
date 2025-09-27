@@ -38,7 +38,8 @@ export default function Projects() {
                             <TechTag>React</TechTag>
                             <TechTag>TypeScript</TechTag>
                             <TechTag>Next.js</TechTag>
-                            <TechTag>Tailwind</TechTag>
+                            <TechTag>Emotion.js</TechTag>
+                            <TechTag>tailwindcss</TechTag>
                         </TechStack>
                     </ProjectCard>
                 </RoutingLink>
@@ -52,8 +53,11 @@ export default function Projects() {
                             <TechTag>HTML</TechTag>
                             <TechTag>React</TechTag>
                             <TechTag>TypeScript</TechTag>
+                            <TechTag>CSS</TechTag>
+                            <TechTag>tailwindcss</TechTag>
                             <TechTag>Emotion.js</TechTag>
                             <TechTag>Next.js</TechTag>
+                            <TechTag>Node.js</TechTag>
                         </TechStack>
                     </ProjectCard>
                 </RoutingLink>

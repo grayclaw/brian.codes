@@ -8,6 +8,7 @@ import { PlanetRecord } from '@types';
 
 import GenerateStars from '../generate-stars';
 import { StarfieldStyles } from '../page-styles';
+import './style.css';
 
 export default function Systems() {
     const { data, error, loading, stats, uniqueRegions, uniqueSystems } = useMergedPlanetData();
@@ -33,25 +34,21 @@ export default function Systems() {
         });
     }, [data, selectedRegion, selectedSystem]);
 
-    useEffect(() => {
-        // console.log(`data:`, data);
-        console.log(`filteredData:`, filteredData);
-        console.log(`selectedRegion:`, selectedRegion);
-        console.log(`selectedSystem:`, selectedSystem);
-        console.log(`regionOptions:`, regionOptions);
-        console.log(`systemOptions:`, systemOptions);
-        // console.log(`uniqueRegions:`, uniqueRegions);
-        // console.log(`uniqueSystems:`, uniqueSystems);
-    }, [
-        data,
-        filteredData,
-        selectedRegion,
-        selectedSystem,
-        regionOptions,
-        systemOptions,
-        uniqueRegions,
-        uniqueSystems,
-    ]);
+    if (!data || loading) {
+        return (
+            <div>
+                <StarfieldStyles>
+                    <GenerateStars />
+                </StarfieldStyles>
+                <h1 className="text-7xl mb-20">Star Systems of the Galaxy</h1>
+                <h1 className="loading">
+                    loading <span>.</span>
+                    <span>.</span>
+                    <span>.</span>
+                </h1>
+            </div>
+        );
+    }
 
     return (
         <div>
@@ -142,33 +139,39 @@ export default function Systems() {
                                             scope="row"
                                             className="text-nowrap px-6 py-4 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100"
                                         >
-                                            {planetaryData['Known Planet Name']}
+                                            {planetaryData['Known Planet Name'] || 'unavailable'}
                                         </th>
                                         <td className="text-nowrap px-6 py-4">
-                                            {planetaryData.Sector}
+                                            {planetaryData.Sector || 'unavailable'}
                                         </td>
                                         <td className="text-nowrap px-6 py-4">
-                                            {planetaryData.Region}
+                                            {planetaryData.Region || 'unavailable'}
                                         </td>
                                         <td className="text-nowrap px-6 py-4">
-                                            {planetaryData.System}
+                                            {planetaryData.System || 'unavailable'}
                                         </td>
                                         <td className="text-nowrap px-6 py-4">
-                                            {planetaryData.Grid}
+                                            {planetaryData.Grid || 'unavailable'}
                                         </td>
                                         <td className="text-nowrap px-6 py-4">
-                                            {planetaryData.X}, {planetaryData.Y}
+                                            {planetaryData.X &&
+                                                planetaryData.Y &&
+                                                `${planetaryData.X}, ${planetaryData.Y}`}
                                         </td>
                                         <td className="text-nowrap px-6 py-4">
-                                            {planetaryData.RA} / {planetaryData.Dec} /
-                                            {planetaryData['Rand. Dist.']}
+                                            {(planetaryData.RA &&
+                                                planetaryData.Dec &&
+                                                planetaryData['Rand. Dist.'] &&
+                                                `${planetaryData.RA} / ${planetaryData.Dec} /
+                                            ${planetaryData['Rand. Dist.']}`) ||
+                                                'unavailable'}
                                         </td>
                                         <td className="text-nowrap px-6 py-4">
                                             <a
                                                 href={planetaryData.Link || ''}
                                                 className="font-medium text-white hover:underline"
                                             >
-                                                {planetaryData.Link}
+                                                {planetaryData.Link || 'unavailable'}
                                             </a>
                                         </td>
                                     </tr>
@@ -178,6 +181,7 @@ export default function Systems() {
                     </table>
                 </div>
             </div>
+            <div></div>
         </div>
     );
 }
