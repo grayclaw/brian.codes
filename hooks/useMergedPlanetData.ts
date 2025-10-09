@@ -4,6 +4,28 @@ import { useEffect, useState } from 'react';
 
 import { PlanetRecord } from '@types';
 
+type Result = {
+    columns: string[];
+    data: PlanetRecord[];
+    error: any;
+    statistics: Statistics;
+    success: boolean;
+    timestamp: string;
+    uniqueRegions: string[];
+    uniqueSystems: string[];
+};
+
+type Statistics = {
+    planetsWithoutSystems: number;
+    matchedLocations: number;
+    newSystemRecords: number;
+    originalPlanets: number;
+    originalSystems: number;
+    recordsWithSystemData: number;
+    totalRecords: number;
+    uniqueLocations: number;
+};
+
 /**
  * Custom React hook to fetch and merge planet + system data from `/api/planets-systems`.
  *
@@ -24,19 +46,20 @@ import { PlanetRecord } from '@types';
 export default function useMergedPlanetData() {
     const [data, setData] = useState<PlanetRecord[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
-    const [stats, setStats] = useState(null);
-    const [uniqueRegions, setUniquesRegions] = useState([]);
-    const [uniqueSystems, setUniquesSystems] = useState([]);
+    const [error, setError] = useState<any>('');
+    const [stats, setStats] = useState<Statistics | null>(null);
+    const [uniqueRegions, setUniquesRegions] = useState<string[] | []>([]);
+    const [uniqueSystems, setUniquesSystems] = useState<string[] | []>([]);
 
     useEffect(() => {
         async function fetchData() {
             try {
                 setLoading(true);
                 const response = await fetch('/api/planetary-systems');
-                const result = await response.json();
+                const result: Result = await response.json();
 
                 if (result.success) {
+                    console.log(`result:`, result);
                     setData(result.data);
                     setStats(result.statistics);
                     setUniquesRegions(result.uniqueRegions);
