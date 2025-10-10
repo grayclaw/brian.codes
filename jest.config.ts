@@ -1,18 +1,22 @@
 module.exports = {
     preset: 'ts-jest',
     testEnvironment: 'jsdom',
-    globals: {
-        'ts-jest': {
-            tsconfig: {
-                jsx: 'react',
+    transform: {
+        '^.+\\.tsx?$': [
+            'ts-jest',
+            {
+                tsconfig: {
+                    jsx: 'react-jsx',
+                },
             },
-        },
+        ],
     },
-    setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     moduleNameMapper: {
-        '^@hooks$': '<rootDir>/src/hooks',
-        '^@/(.*)$': '<rootDir>/src/$1',
+        '^@hooks$': '<rootDir>/hooks',
+        '^@/(.*)$': '<rootDir>/$1',
         '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
     },
     testMatch: ['**/__tests__/**/*.ts?(x)', '**/?(*.)+(spec|test).ts?(x)'],
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
 };

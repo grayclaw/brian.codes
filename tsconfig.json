@@ -40,6 +40,13 @@
             "@utils/*": ["./utils/*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "postcss.config.js"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        "postcss.config.js",
+        "jest.setup.ts"
+    ],
     "exclude": ["node_modules", ".pnpm"]
 }

@@ -1,261 +1,158 @@
 'use client';
 
-import {
-    ReactElement,
-    SetStateAction,
-    createContext,
-    useCallback,
-    useEffect,
-    useMemo,
-    useState,
-} from 'react';
+import { createContext, useCallback, useEffect, useState } from 'react';
 
-import { FIRST_PLAYER, FOURTH_PLAYER, SECOND_PLAYER, THIRD_PLAYER } from '@constants';
+// Types
+type ObjectiveItem = {
+    id: number;
+    name: string;
+    completed: boolean;
+};
 
-import { GameTrackerContextType, KeyValueQueue, Queue } from '@types';
+type LeaderAssignment = {
+    id: number;
+    leader: string;
+    mission: string;
+    completed: boolean;
+};
 
-export const GameTrackerProviderContext = createContext<GameTrackerContextType | null>(null);
+type PlanetControl = {
+    id: number;
+    planet: string;
+    controller: 'Empire' | 'Rebel' | 'Neutral';
+    notes?: string;
+};
 
-interface ProviderProps {
-    children: ReactElement | ReactElement[];
+type ProbeDroid = {
+    id: number;
+    system: string;
+    turn: number;
+};
+
+type TurnLogEntry = {
+    id: number;
+    turn: number;
+    entry: string;
+    timestamp: Date;
+};
+
+type PlayerData = {
+    objectives: ObjectiveItem[];
+    leaderAssignment: LeaderAssignment[];
+    planetControl: PlanetControl[];
+    missionPlanning: string;
+    introCrawl: string;
+    turnLog: TurnLogEntry[];
+    probeDroids: ProbeDroid[];
+    reputationTrack: number;
+    currentTurn: number;
+};
+
+type GameData = {
+    [key: string]: PlayerData;
+};
+
+// Default player data
+const defaultPlayerData: PlayerData = {
+    objectives: [],
+    leaderAssignment: [],
+    planetControl: [],
+    missionPlanning: '',
+    introCrawl: '',
+    turnLog: [],
+    probeDroids: [],
+    reputationTrack: 0,
+    currentTurn: 1,
+};
+
+// Context
+export const GameContext = createContext<any>(null);
+
+// Storage helper
+const STORAGE_KEY = 'sw-rebellion-game-data';
+
+function loadGameData(): GameData {
+    try {
+        const stored = window.localStorage?.getItem(STORAGE_KEY);
+        return stored ? JSON.parse(stored) : {};
+    } catch {
+        return {};
+    }
 }
 
-function deepMerge<T>(target: T, source: Partial<T>): T {
-    if (Array.isArray(target) && Array.isArray(source)) {
-        return [...target, ...source] as T;
+function saveGameData(data: GameData) {
+    try {
+        window.localStorage?.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (e) {
+        console.error('Failed to save game data:', e);
     }
-
-    if (
-        typeof target === 'object' &&
-        target !== null &&
-        typeof source === 'object' &&
-        source !== null &&
-        !Array.isArray(target) &&
-        !Array.isArray(source)
-    ) {
-        const result: any = { ...target };
-        for (const key of Object.keys(source) as (keyof T)[]) {
-            if (key in target) {
-                result[key] = deepMerge((target as any)[key], (source as any)[key]);
-            } else {
-                result[key] = source[key];
-            }
-        }
-        return result as T;
-    }
-
-    return source as T;
 }
 
-export function usePersistentState<T>(
-    key: string,
-    defaultValue: T,
-    tab: string,
-): [T, (update: SetStateAction<T>) => void] {
-    const [state, setState] = useState<T>(() => {
-        if (typeof window === 'undefined') return defaultValue;
-        const stored = localStorage?.getItem(key);
-        if (!stored) return defaultValue;
+// Game Provider
+export default function GameProvider({ children }: { children: React.ReactNode }) {
+    const [activePlayer, setActivePlayer] = useState('Player 1');
+    const [gameData, setGameData] = useState<GameData>(() => loadGameData());
+    const [showTabWarning, setShowTabWarning] = useState(false);
+    const [pendingPlayer, setPendingPlayer] = useState<string | null>(null);
 
-        try {
-            const parsedData = JSON.parse(stored);
-            return parsedData[tab] !== undefined ? (parsedData[tab] as T) : defaultValue;
-        } catch {
-            return defaultValue;
-        }
-    });
-
-    const updateState = useCallback((update: SetStateAction<T>) => {
-        setState((prev) => {
-            let newState: T;
-            if (typeof update === 'function') {
-                newState = (update as (prev: T) => T)(prev);
-            } else {
-                newState = update;
-            }
-            return newState;
-        });
-    }, []);
+    const playerData = gameData[activePlayer] || defaultPlayerData;
 
     useEffect(() => {
-        try {
-            const stored = localStorage?.getItem(key);
-            let existingData = {};
+        saveGameData(gameData);
+    }, [gameData]);
 
-            if (stored) {
-                try {
-                    existingData = JSON.parse(stored);
-                } catch {
-                    existingData = {};
-                }
-            }
+    const updatePlayerData = useCallback(
+        (updates: Partial<PlayerData>) => {
+            setGameData((prev) => ({
+                ...prev,
+                [activePlayer]: { ...playerData, ...updates },
+            }));
+        },
+        [activePlayer, playerData],
+    );
 
-            const updatedData = { ...existingData, [tab]: state };
-            localStorage.setItem(key, JSON.stringify(updatedData));
-        } catch {}
-    }, [key, state, tab]);
-
-    return [state, updateState];
-}
-
-// Alternative version with merge capability
-export function usePersistentStateWithMerge<T>(
-    key: string,
-    defaultValue: T,
-    tab: string,
-): [T, (update: SetStateAction<T> | Partial<T>) => void] {
-    const [state, setState] = useState<T>(() => {
-        if (typeof window === 'undefined') return defaultValue;
-        const stored = localStorage?.getItem(key);
-        if (!stored) return defaultValue;
-
-        try {
-            const parsedData = JSON.parse(stored);
-            return parsedData[tab] !== undefined ? (parsedData[tab] as T) : defaultValue;
-        } catch {
-            return defaultValue;
+    const handlePlayerChange = (newPlayer: string) => {
+        if (newPlayer !== activePlayer) {
+            setPendingPlayer(newPlayer);
+            setShowTabWarning(true);
         }
-    });
+    };
 
-    const mergeOrSet = useCallback((update: SetStateAction<T> | Partial<T>) => {
-        setState((prev) => {
-            let newState: T;
-            if (typeof update === 'function') {
-                // Functional update
-                newState = (update as (prev: T) => T)(prev);
-            } else if (
-                typeof update === 'object' &&
-                update !== null &&
-                typeof prev === 'object' &&
-                prev !== null
-            ) {
-                // Try to merge if both are objects/arrays
-                newState = deepMerge(prev, update as Partial<T>);
-            } else {
-                // Replace
-                newState = update as T;
-            }
-            return newState;
-        });
-    }, []);
+    const confirmPlayerChange = () => {
+        if (pendingPlayer) {
+            setActivePlayer(pendingPlayer);
+            setPendingPlayer(null);
+        }
+        setShowTabWarning(false);
+    };
 
-    useEffect(() => {
-        try {
-            const stored = localStorage?.getItem(key);
-            let existingData = {};
+    const cancelPlayerChange = () => {
+        setPendingPlayer(null);
+        setShowTabWarning(false);
+    };
 
-            if (stored) {
-                try {
-                    existingData = JSON.parse(stored);
-                } catch {
-                    existingData = {};
-                }
-            }
+    const clearAllData = () => {
+        if (
+            window.confirm(
+                'Are you sure you want to end the game and clear all data? This cannot be undone.',
+            )
+        ) {
+            setGameData({});
+            window.localStorage?.removeItem(STORAGE_KEY);
+        }
+    };
 
-            const updatedData = { ...existingData, [tab]: state };
-            localStorage.setItem(key, JSON.stringify(updatedData));
-        } catch {}
-    }, [key, state, tab]);
+    const value = {
+        activePlayer,
+        playerData,
+        updatePlayerData,
+        handlePlayerChange,
+        clearAllData,
+        showTabWarning,
+        pendingPlayer,
+        confirmPlayerChange,
+        cancelPlayerChange,
+    };
 
-    return [state, mergeOrSet];
-}
-
-const tabs = [FIRST_PLAYER, SECOND_PLAYER, THIRD_PLAYER, FOURTH_PLAYER];
-
-export default function GameProvider({ children }: ProviderProps) {
-    const [activeTab, setActiveTab] = useState<string>(tabs[0]);
-    const [buildQueue, setBuildQueue] = usePersistentState<Queue[]>('buildQueue', [], activeTab);
-    const [combatTracker, setCombatTracker] = usePersistentState<string[]>(
-        'combatTracker',
-        [],
-        activeTab,
-    );
-    const [crawlGenerator, setCrawlGenerator] = usePersistentState<string>(
-        'crawlGenerator',
-        '',
-        activeTab,
-    );
-    const [droidTracker, setDroidTracker] = usePersistentState<string[]>(
-        'droidTracker',
-        [],
-        activeTab,
-    );
-    const [holonetUpdates, setHolonetUpdates] = usePersistentState<string>(
-        'holonetUpdates',
-        '',
-        activeTab,
-    );
-    const [leaderAssignment, setLeaderAssignment] = usePersistentStateWithMerge<KeyValueQueue[]>(
-        'leaderAssignment',
-        [],
-        activeTab,
-    );
-    const [log, setLog] = usePersistentState<string>('log', '', activeTab);
-    const [missionPlan, setMissionPlan] = usePersistentState<Queue[]>(
-        'missionPlan',
-        [],
-        activeTab,
-    );
-    const [objectives, setObjectives] = usePersistentState<string[]>('objectives', [], activeTab);
-    const [planetControl, setPlanetControl] = usePersistentState<KeyValueQueue[]>(
-        'planetControl',
-        [],
-        activeTab,
-    );
-    const [probabilityEstimator, setProbabilityEstimator] = usePersistentState<number>(
-        'probabilityEstimator',
-        0,
-        activeTab,
-    );
-
-    const contextValue = useMemo(
-        () => ({
-            buildQueue,
-            combatTracker,
-            crawlGenerator,
-            droidTracker,
-            holonetUpdates,
-            leaderAssignment,
-            log,
-            missionPlan,
-            objectives,
-            planetControl,
-            probabilityEstimator,
-            setBuildQueue,
-            setCombatTracker,
-            setCrawlGenerator,
-            setDroidTracker,
-            setHolonetUpdates,
-            setLeaderAssignment,
-            setLog,
-            setMissionPlan,
-            setObjectives,
-            setPlanetControl,
-            setProbabilityEstimator,
-            tabs,
-            activeTab,
-            setActiveTab,
-        }),
-        [
-            buildQueue,
-            combatTracker,
-            crawlGenerator,
-            droidTracker,
-            holonetUpdates,
-            leaderAssignment,
-            log,
-            missionPlan,
-            objectives,
-            planetControl,
-            probabilityEstimator,
-            activeTab,
-        ],
-    );
-    console.log(`missionPlan:`, missionPlan);
-
-    return (
-        <GameTrackerProviderContext.Provider value={contextValue}>
-            {children}
-        </GameTrackerProviderContext.Provider>
-    );
+    return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 }
