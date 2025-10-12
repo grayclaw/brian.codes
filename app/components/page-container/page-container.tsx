@@ -19,12 +19,12 @@ export default function PageContainer({ children }: PageContainerProps) {
                 <Line />
             </Hamburger>
 
-            <Menu open={open}>
+            <Menu open={open} className="bg-blue-600">
                 <nav>
                     <a href="/">Home</a>
                     <a href="/rebellion-dashboard">Rebellion Dashboard</a>
                     <a href="/planetary-systems">Planetary Search</a>
-                    <a href="/retro-page">Jedi Archive (Retro Page)</a>
+                    <a href="/retro-page">Way Back Machine (Retro Page)</a>
                 </nav>
             </Menu>
 

@@ -102,7 +102,7 @@ export default function ObjectivesTracker() {
                             className="w-4 h-4"
                         />
                         <span
-                            className={`flex-1 ${obj.completed ? 'line-through text-gray-400' : 'text-white'}`}
+                            className={`flex-1 ${obj.completed ? 'line-through text-white' : 'text-white'}`}
                         >
                             {obj.name}
                         </span>
@@ -115,7 +115,7 @@ export default function ObjectivesTracker() {
                     </div>
                 ))}
                 {playerData.objectives.length === 0 && (
-                    <div className="text-gray-400 text-center py-4">No objectives yet</div>
+                    <div className="text-white text-center py-4">No objectives yet</div>
                 )}
             </div>
             <div className="flex gap-2">
@@ -125,12 +125,12 @@ export default function ObjectivesTracker() {
                     onChange={(e) => setNewObjective(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && addObjective()}
                     placeholder="Add objective..."
-                    className="flex-1 px-3 py-2 bg-gray-900 text-white border border-gray-600 rounded"
+                    className="flex-1 px-3 py-2 bg-gray-900 text-white border border-gray-600 rounded placeholder:text-white"
                 />
                 <button
                     onClick={addObjective}
                     disabled={!newObjective.trim()}
-                    className="px-4 py-2 bg-[var(--star-wars-yellow)] text-black font-semibold rounded hover:bg-blue-600 hover:text-white disabled:bg-gray-600 disabled:text-gray-400"
+                    className={`px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 disabled:bg-gray-600 ${!newObjective.trim() ? 'cursor-not-allowed' : ''}`}
                 >
                     Add
                 </button>

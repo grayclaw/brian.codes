@@ -2,10 +2,10 @@
 
 import { useEffect, useMemo, useState } from 'react';
 
+import { StarField } from '@components';
+
 import { useMergedPlanetData } from '@hooks';
 
-import GenerateStars from '../generate-stars';
-import { StarfieldStyles } from '../page-styles';
 import './style.css';
 
 export default function Systems() {
@@ -60,9 +60,7 @@ export default function Systems() {
     if (!data || loading) {
         return (
             <div>
-                <StarfieldStyles>
-                    <GenerateStars />
-                </StarfieldStyles>
+                <StarField />
                 <h1 className="text-7xl mb-20">Star Systems of the Galaxy</h1>
                 <h2 className="loading">
                     loading <span>.</span>
@@ -76,9 +74,7 @@ export default function Systems() {
     if (error) {
         return (
             <div>
-                <StarfieldStyles>
-                    <GenerateStars />
-                </StarfieldStyles>
+                <StarField />
                 <h1 className="text-7xl mb-20">Star Systems of the Galaxy</h1>
                 <h2 className="loading">We are having trouble loading your request</h2>
             </div>
@@ -87,9 +83,7 @@ export default function Systems() {
 
     return (
         <div>
-            <StarfieldStyles>
-                <GenerateStars />
-            </StarfieldStyles>
+            <StarField />
             <h1 className="text-7xl">Star Systems of the Galaxy</h1>
             <div>
                 <h2 className="mt-12 mb-8 text-4xl">Galactic Planetary & System Statistics</h2>

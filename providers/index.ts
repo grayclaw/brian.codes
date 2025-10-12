@@ -1,4 +1,2 @@
-export { default as AppProvider } from './app-provider';
-export { CharactersProviderContext } from './app-provider';
-export { default as GameProvider } from './game-provider';
-export { GameContext } from './game-provider';
+export { default as AppProvider, CharactersProviderContext } from './app-provider';
+export { default as GameProvider, GameContext } from './game-provider';

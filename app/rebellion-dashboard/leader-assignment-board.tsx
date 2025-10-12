@@ -111,7 +111,7 @@ export default function LeaderAssignmentBoard() {
                             className="w-4 h-4"
                         />
                         <span
-                            className={`flex-1 ${assign.completed ? 'line-through text-gray-400' : 'text-white'}`}
+                            className={`flex-1 ${assign.completed ? 'line-through text-white' : 'text-white'}`}
                         >
                             <span className="text-blue-300 font-medium">{assign.leader}</span>:{' '}
                             {assign.mission}
@@ -125,7 +125,7 @@ export default function LeaderAssignmentBoard() {
                     </div>
                 ))}
                 {playerData.leaderAssignment.length === 0 && (
-                    <div className="text-gray-400 text-center py-4">No assignments yet</div>
+                    <div className="text-white text-center py-4">No assignments yet</div>
                 )}
             </div>
             <div className="space-y-2">
@@ -134,7 +134,7 @@ export default function LeaderAssignmentBoard() {
                     value={newLeader}
                     onChange={(e) => setNewLeader(e.target.value)}
                     placeholder="Leader (e.g., Han Solo)..."
-                    className="w-full px-3 py-2 bg-gray-900 text-white border border-gray-600 rounded"
+                    className="w-full px-3 py-2 bg-gray-900 text-white border border-gray-600 rounded placeholder:text-white"
                 />
                 <input
                     type="text"
@@ -142,12 +142,12 @@ export default function LeaderAssignmentBoard() {
                     onChange={(e) => setNewMission(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && addAssignment()}
                     placeholder="Mission (e.g., Smuggling Run)..."
-                    className="w-full px-3 py-2 bg-gray-900 text-white border border-gray-600 rounded"
+                    className="w-full px-3 py-2 bg-gray-900 text-white border border-gray-600 rounded placeholder:text-white"
                 />
                 <button
                     onClick={addAssignment}
                     disabled={!newLeader.trim() || !newMission.trim()}
-                    className="w-full px-4 py-2 bg-[var(--star-wars-yellow)] text-black font-semibold rounded hover:bg-blue-600 hover:text-white disabled:bg-gray-600 disabled:text-gray-400"
+                    className={`w-full px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 disabled:bg-gray-600 disabled:text-white ${!newLeader.trim() || !newMission.trim() ? 'cursor-not-allowed' : ''}`}
                 >
                     Add Assignment
                 </button>

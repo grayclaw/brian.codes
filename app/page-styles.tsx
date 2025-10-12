@@ -46,10 +46,10 @@ export const Hero = styled.section`
 
 export const HeroContent = styled.div`
     animation: fadeInUp 1.5s ease-out 0.5s forwards;
+    background-color: transparent;
     opacity: 0;
     text-align: center;
     transform: translateY(50px);
-    z-index: 2;
 
     @keyframes fadeInUp {
         to {
@@ -57,31 +57,6 @@ export const HeroContent = styled.div`
             opacity: 1;
         }
     }
-`;
-
-export const StarStyles = styled.div`
-    animation: pulse 2s infinite;
-    background-color: white;
-    border-radius: 50%;
-    position: absolute;
-
-    @keyframes pulse {
-        0%,
-        100% {
-            opacity: 0.3;
-        }
-        50% {
-            opacity: 1;
-        }
-    }
-`;
-
-export const StarfieldStyles = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
 `;
 
 export const Subtitle = styled.p`

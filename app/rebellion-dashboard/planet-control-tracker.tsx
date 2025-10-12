@@ -116,7 +116,7 @@ export default function PlanetControlTracker() {
                     </div>
                 ))}
                 {playerData.planetControl.length === 0 && (
-                    <div className="text-gray-400 text-center py-4">No planets tracked</div>
+                    <div className="text-white text-center py-4">No planets tracked</div>
                 )}
             </div>
             <div className="space-y-2">
@@ -126,7 +126,7 @@ export default function PlanetControlTracker() {
                     onChange={(e) => setNewPlanet(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && addPlanet()}
                     placeholder="Planet name (e.g., Kashyyyk)..."
-                    className="w-full px-3 py-2 bg-gray-900 text-white border border-gray-600 rounded"
+                    className="w-full px-3 py-2 bg-gray-900 text-white border border-gray-600 rounded placeholder:text-white"
                 />
                 <div className="flex gap-2">
                     <select
@@ -141,7 +141,7 @@ export default function PlanetControlTracker() {
                     <button
                         onClick={addPlanet}
                         disabled={!newPlanet.trim()}
-                        className="px-4 py-2 bg-[var(--star-wars-yellow)] text-black font-semibold rounded hover:bg-blue-600 hover:text-white disabled:bg-gray-600 disabled:text-gray-400"
+                        className={`px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 disabled:bg-gray-600 ${!newPlanet.trim() ? 'cursor-not-allowed' : ''}`}
                     >
                         Add
                     </button>

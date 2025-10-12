@@ -88,8 +88,7 @@ export default function ProbeDroidTracker() {
                         className="flex items-center gap-2 p-1 rounded hover:bg-gray-700 text-sm"
                     >
                         <span className="flex-1 text-white">
-                            {probe.system}{' '}
-                            <span className="text-gray-400">(Turn {probe.turn})</span>
+                            {probe.system} <span className="text-white">(Turn {probe.turn})</span>
                         </span>
                         <button
                             onClick={() => removeProbe(probe.id)}
@@ -100,7 +99,7 @@ export default function ProbeDroidTracker() {
                     </div>
                 ))}
                 {playerData.probeDroids.length === 0 && (
-                    <div className="text-gray-400 text-center py-2 text-sm">No probes deployed</div>
+                    <div className="text-white text-center py-2 text-sm">No probes deployed</div>
                 )}
             </div>
             <div className="flex gap-2">
@@ -110,12 +109,12 @@ export default function ProbeDroidTracker() {
                     onChange={(e) => setNewSystem(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && addProbe()}
                     placeholder="System name..."
-                    className="flex-1 px-2 py-1 bg-gray-900 text-white border border-gray-600 rounded text-sm"
+                    className="flex-1 px-2 py-1 bg-gray-900 text-white border border-gray-600 rounded text-sm placeholder:text-white"
                 />
                 <button
                     onClick={addProbe}
                     disabled={!newSystem.trim()}
-                    className="px-3 py-1 bg-[var(--star-wars-yellow)] text-black font-semibold rounded hover:bg-blue-600 hover:text-white disabled:bg-gray-600 text-sm"
+                    className={`px-3 py-1 bg-blue-600 text-white font-semibold rounded hover:bg-blue-600 disabled:bg-gray-600 text-sm ${!newSystem.trim() ? 'cursor-not-allowed' : ''}`}
                 >
                     Add
                 </button>

@@ -8,6 +8,7 @@ export const ProjectCard = styled.div`
     background: linear-gradient(145deg, #1a1a2e, #16213e);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 415px;
     overflow: hidden;
     padding: 40px;
     position: relative;

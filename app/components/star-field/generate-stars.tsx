@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { StarStyles } from './page-styles';
+import { StarStyles } from './star-field-styles';
 
 type Star = {
     left: string;

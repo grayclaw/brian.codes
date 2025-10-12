@@ -34,7 +34,7 @@ export const ContentBox = styled.div`
     padding: 20px;
 `;
 
-export const Footer = styled.footer`
+export const WayBackExtraFooter = styled.p`
     font-size: var(--text-sm);
     font-weight: 500;
     margin-top: 50px;

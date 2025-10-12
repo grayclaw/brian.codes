@@ -1,4 +1,4 @@
-import { CharactersProviderContext, GameTrackerProviderContext } from '@providers';
+import { CharactersProviderContext, GameContext } from '@providers';
 
 import { CharacterContextType, GameTrackerContextType } from '@types';
 
@@ -13,5 +13,5 @@ export function useAppContext(): CharacterContextType {
 }
 
 export function useGameContext(): GameTrackerContextType {
-    return useGenericContextWithNull(GameTrackerProviderContext, 'GameTrackerProviderContext');
+    return useGenericContextWithNull(GameContext, 'GameContext');
 }

@@ -1,5 +1,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
+import { StarField } from '@components';
+
 import { useGameData } from '@hooks';
 
 import LeaderAssignmentBoard from './leader-assignment-board';
@@ -74,7 +76,8 @@ export default function Dashboard() {
     const players = ['Player 1', 'Player 2', 'Player 3', 'Player 4'];
 
     return (
-        <div className="min-h-screen bg-gray-900 text-white p-6">
+        <div className="min-h-screen bg-transparent text-white p-6">
+            <StarField />
             <TabWarningModal
                 show={showTabWarning}
                 playerName={pendingPlayer}
@@ -103,7 +106,7 @@ export default function Dashboard() {
                             className={`px-6 py-3 -mb-px border-b-2 transition-colors ${
                                 activePlayer === player
                                     ? 'border-[var(--star-wars-yellow)] text-[var(--star-wars-yellow)]'
-                                    : 'border-transparent text-gray-400 hover:text-white hover:border-gray-500'
+                                    : 'border-transparent text-white hover:text-white hover:border-gray-500'
                             }`}
                         >
                             {player}
@@ -127,7 +130,7 @@ export default function Dashboard() {
                             onChange={(e) => updatePlayerData({ missionPlanning: e.target.value })}
                             placeholder="Plan your missions here..."
                             rows={12}
-                            className="w-full p-3 bg-gray-900 text-white border border-gray-600 rounded"
+                            className="w-full p-3 bg-gray-900 text-white border border-gray-600 rounded placeholder:text-white"
                         />
                     </div>
                     <div className="space-y-4">
@@ -167,7 +170,7 @@ export default function Dashboard() {
                             onChange={(e) => updatePlayerData({ introCrawl: e.target.value })}
                             placeholder="Write your opening crawl..."
                             rows={8}
-                            className="w-full p-3 bg-gray-900 text-white border border-gray-600 rounded"
+                            className="w-full p-3 bg-gray-900 text-white border border-gray-600 rounded placeholder:text-white"
                         />
                     </div>
                     <TurnLogJournal />

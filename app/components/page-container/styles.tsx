@@ -37,15 +37,15 @@ export const Hamburger = styled.button<{ open: boolean }>`
 `;
 
 export const Menu = styled.div<{ open: boolean }>`
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 20vw;
-    height: 0;
-    background: var(--gray-800);
+    border-radius: 8px;
     color: white;
+    height: 0;
     overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
     transition: height 0.4s ease;
+    width: 20vw;
     z-index: 15;
 
     nav {

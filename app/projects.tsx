@@ -65,8 +65,8 @@ export default function Projects() {
                 <RoutingLink href="/retro-page">
                     <ProjectCard className="project-card">
                         <ProjectIcon>🌌</ProjectIcon>
-                        <h3>Jedi Archive</h3>
-                        <p>Travel back to a long, long time ago and a little closer galaxy.</p>
+                        <h3>Way Back Machine</h3>
+                        <p>Travel back to a long, long time ago but a slightly closer galaxy.</p>
                         <TechStack>
                             <TechTag>HTML</TechTag>
                             <TechTag>React</TechTag>
@@ -77,24 +77,42 @@ export default function Projects() {
                     </ProjectCard>
                 </RoutingLink>
 
+                <RoutingLink href="/code-learning">
+                    <ProjectCard className="project-card">
+                        <ProjectIcon>🌌</ProjectIcon>
+                        <h3>Galactic Trade Network</h3>
+                        <p>
+                            A decentralized marketplace for trading rare artifacts and resources
+                            between star systems. Implements blockchain technology for secure
+                            transactions.
+                        </p>
+                        <TechStack>
+                            <TechTag>Blockchain</TechTag>
+                            <TechTag>Web3</TechTag>
+                            <TechTag>Solidity</TechTag>
+                            <TechTag>Next.js</TechTag>
+                        </TechStack>
+                    </ProjectCard>
+                </RoutingLink>
+
                 <ProjectCard className="project-card">
-                    <ProjectIcon>🌌</ProjectIcon>
-                    <h3>Galactic Trade Network</h3>
+                    <ProjectIcon>🤖</ProjectIcon>
+                    <h3>Protocol Droid AI</h3>
                     <p>
-                        A decentralized marketplace for trading rare artifacts and resources between
-                        star systems. Implements blockchain technology for secure transactions.
+                        A sophisticated chatbot trained on diplomatic protocols from across the
+                        galaxy. Capable of translating between 6 million forms of communication.
                     </p>
                     <TechStack>
-                        <TechTag>Blockchain</TechTag>
-                        <TechTag>Web3</TechTag>
-                        <TechTag>Solidity</TechTag>
-                        <TechTag>Next.js</TechTag>
+                        <TechTag>Python</TechTag>
+                        <TechTag>TensorFlow</TechTag>
+                        <TechTag>NLP</TechTag>
+                        <TechTag>FastAPI</TechTag>
                     </TechStack>
                 </ProjectCard>
 
                 <ProjectCard className="project-card">
                     <ProjectIcon>🤖</ProjectIcon>
-                    <h3>Protocol Droid AI</h3>
+                    <h3>Jedi Archive</h3>
                     <p>
                         A sophisticated chatbot trained on diplomatic protocols from across the
                         galaxy. Capable of translating between 6 million forms of communication.

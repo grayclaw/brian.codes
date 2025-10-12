@@ -30,7 +30,7 @@ const buttonStyles = `
 `;
 
 export const ContainerStyles = styled.div<ContainerProps>`
-    background-color: var(--pure-black);
+    background-color: transparent;
     color: var(--star-wars-yellow);
     font-family: Impact, 'Arial Black', Gadget, sans-serif, monospace;
     overflow: hidden;

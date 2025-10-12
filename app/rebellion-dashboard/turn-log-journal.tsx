@@ -86,7 +86,7 @@ export default function TurnLogJournal() {
             <div className="flex justify-between items-center mb-3">
                 <h2 className="font-semibold text-lg text-[var(--star-wars-yellow)]">Turn Log</h2>
                 <div className="flex items-center gap-2">
-                    <span className="text-sm text-gray-400">Turn:</span>
+                    <span className="text-sm text-white">Turn:</span>
                     <input
                         type="number"
                         min="1"
@@ -102,7 +102,7 @@ export default function TurnLogJournal() {
                 {playerData.turnLog.map((log: TurnLogEntry) => (
                     <div key={log.id} className="p-2 bg-gray-900 rounded text-sm">
                         <div className="flex justify-between items-start mb-1">
-                            <span className="text-yellow-400 font-medium">Turn {log.turn}</span>
+                            <span className="text-white font-medium">Turn {log.turn}</span>
                             <button
                                 onClick={() => removeEntry(log.id)}
                                 className="text-red-400 hover:text-red-300 text-xs"
@@ -114,7 +114,7 @@ export default function TurnLogJournal() {
                     </div>
                 ))}
                 {playerData.turnLog.length === 0 && (
-                    <div className="text-gray-400 text-center py-4 text-sm">No log entries</div>
+                    <div className="text-white text-center py-4 text-sm">No log entries</div>
                 )}
             </div>
             <div className="space-y-2">
@@ -123,12 +123,12 @@ export default function TurnLogJournal() {
                     onChange={(e) => setNewEntry(e.target.value)}
                     placeholder="Record turn events..."
                     rows={3}
-                    className="w-full px-2 py-2 bg-gray-900 text-white border border-gray-600 rounded text-sm"
+                    className="w-full px-2 py-2 bg-gray-900 text-white border border-gray-600 rounded text-sm placeholder:text-white"
                 />
                 <button
                     onClick={addEntry}
                     disabled={!newEntry.trim()}
-                    className="w-full px-3 py-1 bg-[var(--star-wars-yellow)] text-black font-semibold rounded hover:bg-blue-600 hover:text-white disabled:bg-gray-600 text-sm"
+                    className={`w-full px-3 py-1 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 disabled:bg-gray-600 text-sm ${!newEntry.trim() ? 'cursor-not-allowed' : ''}`}
                 >
                     Add Entry
                 </button>

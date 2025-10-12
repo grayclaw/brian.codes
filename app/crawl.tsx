@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+import { StarField } from '@components';
+
 import {
     ButtonContainerStyles,
     ContainerStyles,
@@ -11,13 +13,11 @@ import {
     ParagraphStyles,
     ResetButtonStyles,
     SpacerStyles,
-    StarfieldStyles,
     StartButtonStyles,
     SubTitleStyles,
     TextContainerStyles,
     TitleContainerStyles,
 } from './crawl-styles';
-import GenerateStars from './generate-stars';
 
 export default function Crawl() {
     const [isPlaying, setIsPlaying] = useState(true);
@@ -59,9 +59,7 @@ export default function Crawl() {
         <>
             <audio ref={audioRef} src="/star-wars-crawl.m4a" autoPlay />
             <ContainerStyles shouldHide={shouldHide}>
-                <StarfieldStyles>
-                    <GenerateStars />
-                </StarfieldStyles>
+                <StarField />
 
                 <ButtonContainerStyles>
                     <StartButtonStyles onClick={startCrawl}>Start Crawl</StartButtonStyles>

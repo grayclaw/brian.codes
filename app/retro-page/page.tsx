@@ -9,11 +9,11 @@ import Joke from './joke';
 import {
     Body,
     ContentBox,
-    Footer,
     RoutingLink,
     ScrollingSpan,
     ScrollingText,
     Title,
+    WayBackExtraFooter,
 } from './page-styles';
 
 export const metadata: Metadata = {
@@ -60,7 +60,9 @@ export default function Home() {
             </ContentBox>
             <ButtonCarousel />
             <Character />
-            <Footer>May the Force be with you! &copy; 1999 Star Wars Fan Club</Footer>
+            <WayBackExtraFooter>
+                May the Force be with you! &copy; 1999 Star Wars Fan Club
+            </WayBackExtraFooter>
         </Body>
     );
 }
