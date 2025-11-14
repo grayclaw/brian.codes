@@ -1,3 +1,14 @@
+export type BreakpointType = {
+    /** True when width is ≤ 640px */
+    sm: boolean;
+    /** True when width is ≤ 768px */
+    md: boolean;
+    /** True when width is ≤ 1024px */
+    lg: boolean;
+    /** True when width is ≥ 1025 */
+    xl: boolean;
+};
+
 export type CharacterContextType = {
     allCharacters: CharacterType[];
     setCharacterNumber: (number: number) => void;

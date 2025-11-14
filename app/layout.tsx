@@ -2,7 +2,7 @@ import { PageContainer } from '@components';
 
 import { PURE_BLACK, SW_API } from '@constants';
 
-import { AppProvider } from '@providers';
+import { AppProvider, BreakpointProvider } from '@providers';
 
 import { CharacterType } from '@types';
 
@@ -40,7 +40,9 @@ export default async function RootLayout({ children }: { children: React.ReactEl
             </head>
             <body style={{ margin: '0', background: PURE_BLACK }}>
                 <AppProvider value={{ characters, nextCharacterPage }}>
-                    <PageContainer>{children}</PageContainer>
+                    <BreakpointProvider>
+                        <PageContainer>{children}</PageContainer>
+                    </BreakpointProvider>
                 </AppProvider>
             </body>
         </html>
