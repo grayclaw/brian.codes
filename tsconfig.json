@@ -33,6 +33,8 @@
             "@constants": ["./constants"],
             "@hooks": ["./hooks"],
             "@hooks/*": ["./hooks/*"],
+            "@icons": ["./icons"],
+            "@icons/*": ["./icons/*"],
             "@learnings": ["./app/code-learning/learnings"],
             "@learnings/*": ["./app/code-learning/learnings/*"],
             "@providers": ["./providers"],
