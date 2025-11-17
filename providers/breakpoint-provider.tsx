@@ -54,6 +54,7 @@ export default function BreakpointProvider({ children }: { children: ReactNode }
             window.removeEventListener('resize', debouncedUpdate);
         };
     }, []);
+    console.log(`breakpoint:`, breakpoint);
 
     return <BreakpointContext.Provider value={breakpoint}>{children}</BreakpointContext.Provider>;
 }

@@ -55,7 +55,7 @@ export const Menu = styled.div<{ open: boolean }>`
         gap: 1rem;
     }
 
-    ${({ open }) => open && `height: 220px;`}
+    ${({ open }) => open && `height: auto;`}
 `;
 
 export const ContentWrapper = styled.main`

@@ -11,7 +11,10 @@ type ChildrenProp = {
 
 export function CodeCard({ children, id, title }: CodeCardProps) {
     return (
-        <div id={id} className="bg-slate-900 p-6 text-md inline-block w-full mb-4">
+        <div
+            id={id}
+            className="bg-slate-900 p-6 text-md inline-block w-full mb-4 h-96 overflow-y-scroll"
+        >
             <h2 className="text-left mb-4 text-2xl">{title}</h2>
             {children}
         </div>

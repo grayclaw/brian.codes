@@ -25,6 +25,19 @@ export default function Projects() {
             </SectionSubtitle>
 
             <ProjectGrid>
+                <RoutingLink href="/resume">
+                    <ProjectCard className="project-card">
+                        <ProjectIcon>🚀</ProjectIcon>
+                        <h3>Behind the Code</h3>
+                        <p>My resum&eacute;.</p>
+                        <TechStack>
+                            <TechTag>React</TechTag>
+                            <TechTag>TypeScript</TechTag>
+                            <TechTag>tailwindcss</TechTag>
+                        </TechStack>
+                    </ProjectCard>
+                </RoutingLink>
+
                 <RoutingLink href="/rebellion-dashboard">
                     <ProjectCard className="project-card">
                         <ProjectIcon>🚀</ProjectIcon>
