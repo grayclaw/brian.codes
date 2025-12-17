@@ -9,6 +9,8 @@
         "^@components(.*)",
         "^@constants(.*)",
         "^@hooks(.*)$",
+        "^@icons(.*)$",
+        "^@providers(.*)$",
         "^@types(.*)$",
         "^@utils(.*)$",
         "^[./]"

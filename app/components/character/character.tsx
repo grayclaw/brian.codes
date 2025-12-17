@@ -1,6 +1,6 @@
 'use client';
 
-import { useCharactersContext } from '@hooks';
+import { useAppContext } from '@hooks';
 
 import { ContentBox } from '../../retro-page/page-styles';
 
@@ -19,7 +19,7 @@ export default function Character() {
             // vehicles,
             // starships,
         },
-    } = useCharactersContext();
+    } = useAppContext();
 
     const hasValue = (characteristic: string) => {
         return (

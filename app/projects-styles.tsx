@@ -1,11 +1,14 @@
 'use client';
 
+import Link from 'next/link';
+
 import styled from '@emotion/styled';
 
 export const ProjectCard = styled.div`
     background: linear-gradient(145deg, #1a1a2e, #16213e);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 415px;
     overflow: hidden;
     padding: 40px;
     position: relative;
@@ -42,7 +45,7 @@ export const ProjectCard = styled.div`
     &:hover {
         border-color: rgba(0, 212, 255, 0.3);
         box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-        transform: translateY(-10px);
+        // transform: translateY(-10px);
     }
 `;
 
@@ -67,6 +70,10 @@ export const ProjectIcon = styled.div`
     justify-content: center;
     margin-bottom: 20px;
     width: 60px;
+`;
+
+export const RoutingLink = styled(Link)`
+    text-decoration: none;
 `;
 
 export const Section = styled.section`

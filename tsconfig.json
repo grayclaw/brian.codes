@@ -13,7 +13,15 @@
         "isolatedModules": true,
         "jsx": "preserve",
         "incremental": true,
-        "types": ["node", "react", "react-dom"],
+        "types": [
+            "@testing-library/jest-dom",
+            "@testing-library/react",
+            "@testing-library/user-event",
+            "jest",
+            "node",
+            "react",
+            "react-dom"
+        ],
         "plugins": [
             {
                 "name": "next"
@@ -25,11 +33,24 @@
             "@constants": ["./constants"],
             "@hooks": ["./hooks"],
             "@hooks/*": ["./hooks/*"],
+            "@icons": ["./icons"],
+            "@icons/*": ["./icons/*"],
+            "@learnings": ["./app/code-learning/learnings"],
+            "@learnings/*": ["./app/code-learning/learnings/*"],
+            "@providers": ["./providers"],
+            "@providers/*": ["./providers/*"],
             "@types": ["./types"],
             "@utils": ["./utils"],
             "@utils/*": ["./utils/*"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        "postcss.config.js",
+        "jest.setup.ts"
+    ],
     "exclude": ["node_modules", ".pnpm"]
 }

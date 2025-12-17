@@ -1,0 +1,1 @@
+export { Agile } from './svg';

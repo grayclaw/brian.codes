@@ -30,8 +30,8 @@ const buttonStyles = `
 `;
 
 export const ContainerStyles = styled.div<ContainerProps>`
-    background-color: var(--pure-black);
-    color: var(--yellow-100);
+    background-color: transparent;
+    color: var(--star-wars-yellow);
     font-family: Impact, 'Arial Black', Gadget, sans-serif, monospace;
     overflow: hidden;
     position: relative;
@@ -124,11 +124,11 @@ export const StarfieldStyles = styled.div`
 
 export const StartButtonStyles = styled.button`
     ${buttonStyles};
-    background-color: var(--yellow-100);
+    background-color: var(--star-wars-yellow);
     color: var(--pure-black);
 
     &:hover {
-        background-color: var(--yellow-100);
+        background-color: var(--star-wars-yellow);
     }
 `;
 

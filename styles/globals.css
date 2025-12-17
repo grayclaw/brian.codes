@@ -1,7 +1,6 @@
-:root {
-    --background: var(--white);
-    --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @media (prefers-color-scheme: dark) {
     :root {
@@ -21,29 +20,13 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-repeat: repeat;
     background-color: black;
-    color: yellow;
-    font-family: Impact, 'Arial Black', Gadget, sans-serif, monospace;
-    margin: 0;
+    color: var(--star-wars-yellow);
+    font-family: var(--font-family);
     text-align: center;
 }
 
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
-a {
-    color: cyan;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
 .content-box {
-    border: 3px solid yellow;
+    border: 3px solid var(--star-wars-yellow);
     padding: 20px;
     margin: 20px auto;
     max-width: 600px;

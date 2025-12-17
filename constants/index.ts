@@ -17,3 +17,8 @@ export const YELLOW_100 = '#ffe81f';
 
 // API URL's
 export const SW_API = 'https://swapi.py4e.com/api';
+
+export const FIRST_PLAYER = 'First Player';
+export const SECOND_PLAYER = 'Second Player';
+export const THIRD_PLAYER = 'Third Player';
+export const FOURTH_PLAYER = 'Fourth Player';

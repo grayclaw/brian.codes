@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+import { StarField } from '@components';
+
 import {
     ButtonContainerStyles,
     ContainerStyles,
@@ -11,17 +13,16 @@ import {
     ParagraphStyles,
     ResetButtonStyles,
     SpacerStyles,
-    StarfieldStyles,
     StartButtonStyles,
     SubTitleStyles,
     TextContainerStyles,
     TitleContainerStyles,
 } from './crawl-styles';
-import GenerateStars from './generate-stars';
 
 export default function Crawl() {
     const [isPlaying, setIsPlaying] = useState(true);
     const [shouldHide, setShouldHide] = useState(false);
+    const [mute, setMute] = useState(false);
     const audioRef = useRef<HTMLAudioElement>(null);
 
     const startCrawl = () => {
@@ -31,11 +32,20 @@ export default function Crawl() {
 
     const resetCrawl = () => {
         setIsPlaying(false);
-        // audioRef.current?.pause();
+        audioRef.current?.pause();
         audioRef.current && (audioRef.current.currentTime = 0);
     };
 
+    const toggleMute = () => {
+        if (audioRef.current) {
+            audioRef.current.muted = !audioRef.current.muted;
+        }
+    };
+
     useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.volume = 0.1;
+        }
         const timeoutId = setTimeout(() => {
             setShouldHide(true);
         }, 87000);
@@ -47,15 +57,14 @@ export default function Crawl() {
 
     return (
         <>
-            {/* <audio ref={audioRef} src="/star-wars-crawl.m4a" controls autoPlay /> */}
+            <audio ref={audioRef} src="/star-wars-crawl.m4a" autoPlay />
             <ContainerStyles shouldHide={shouldHide}>
-                <StarfieldStyles>
-                    <GenerateStars />
-                </StarfieldStyles>
+                <StarField />
 
                 <ButtonContainerStyles>
                     <StartButtonStyles onClick={startCrawl}>Start Crawl</StartButtonStyles>
                     <ResetButtonStyles onClick={resetCrawl}>Reset</ResetButtonStyles>
+                    <StartButtonStyles onClick={toggleMute}>Mute Sound</StartButtonStyles>
                 </ButtonContainerStyles>
 
                 <CrawlContainerStyles>

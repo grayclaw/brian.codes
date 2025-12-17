@@ -14,15 +14,26 @@
     --pure-black: #000000;
 
     /* star wars yellow */
-    --yellow-100: #ffe81f;
+    --star-wars-yellow: #ffe81f;
 
     /* Fonts Sizes */
-    --font-size-xs: 14px;
-    --font-size-sm: 16px;
-    --font-size-md: 20px;
-    --font-size-lg: 24px;
-    --font-size-xl: 28px;
-    --font-size-xxl: 32px;
+    --text-xs: 14px;
+    --text-sm: 16px;
+    --text-md: 20px;
+    --text-lg: 24px;
+    --text-xl: 28px;
+    --text-xxl: 32px;
+
+    /* Font Weight */
+    --font-weight-thin: 100;
+    --font-weight-extralight: 200;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    --font-weight-black: 900;
 
     /* Font Family */
     --font-family: Impact, 'Arial Black', Gadget, sans-serif, monospace;

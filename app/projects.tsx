@@ -1,13 +1,12 @@
 'use client';
 
-import Link from 'next/link';
-
 import { useProjectCardObserver } from '@hooks';
 
 import {
     ProjectCard,
     ProjectGrid,
     ProjectIcon,
+    RoutingLink,
     Section,
     SectionSubtitle,
     SectionTitle,
@@ -26,37 +25,72 @@ export default function Projects() {
             </SectionSubtitle>
 
             <ProjectGrid>
-                <ProjectCard className="project-card">
-                    <ProjectIcon>🚀</ProjectIcon>
-                    <h3>Rebellion Dashboard</h3>
-                    <p>
-                        A real-time monitoring system for tracking Imperial fleet movements across
-                        the galaxy. Built with React and WebSocket connections for live updates.
-                    </p>
-                    <TechStack>
-                        <TechTag>React</TechTag>
-                        <TechTag>TypeScript</TechTag>
-                        <TechTag>Next.js</TechTag>
-                        <TechTag>Emotion.js</TechTag>
-                    </TechStack>
-                </ProjectCard>
+                <RoutingLink href="/resume">
+                    <ProjectCard className="project-card">
+                        <ProjectIcon>🚀</ProjectIcon>
+                        <h3>Behind the Code</h3>
+                        <p>My resum&eacute;.</p>
+                        <TechStack>
+                            <TechTag>React</TechTag>
+                            <TechTag>TypeScript</TechTag>
+                            <TechTag>tailwindcss</TechTag>
+                        </TechStack>
+                    </ProjectCard>
+                </RoutingLink>
 
-                <ProjectCard className="project-card">
-                    <ProjectIcon>⚡</ProjectIcon>
-                    <h3>Lightsaber Configurator</h3>
-                    <p>
-                        An interactive 3D tool for customizing lightsaber designs with real-time
-                        rendering and physics simulation. Features over 500 unique combinations.
-                    </p>
-                    <TechStack>
-                        <TechTag>Three.js</TechTag>
-                        <TechTag>WebGL</TechTag>
-                        <TechTag>Vue.js</TechTag>
-                        <TechTag>Node.js</TechTag>
-                    </TechStack>
-                </ProjectCard>
+                <RoutingLink href="/rebellion-dashboard">
+                    <ProjectCard className="project-card">
+                        <ProjectIcon>🚀</ProjectIcon>
+                        <h3>Rebellion Dashboard</h3>
+                        <p>
+                            A real-time monitoring system for tracking Imperial fleet movements
+                            across the galaxy. Built with React and WebSocket connections for live
+                            updates.
+                        </p>
+                        <TechStack>
+                            <TechTag>React</TechTag>
+                            <TechTag>TypeScript</TechTag>
+                            <TechTag>Next.js</TechTag>
+                            <TechTag>Emotion.js</TechTag>
+                            <TechTag>tailwindcss</TechTag>
+                        </TechStack>
+                    </ProjectCard>
+                </RoutingLink>
 
-                <Link href="/retro-page">
+                <RoutingLink href="/planetary-systems">
+                    <ProjectCard className="project-card">
+                        <ProjectIcon>🪐</ProjectIcon>
+                        <h3>Planetary Search</h3>
+                        <p>Find known planets, systems, and regions in the galaxy.</p>
+                        <TechStack>
+                            <TechTag>HTML</TechTag>
+                            <TechTag>React</TechTag>
+                            <TechTag>TypeScript</TechTag>
+                            <TechTag>CSS</TechTag>
+                            <TechTag>tailwindcss</TechTag>
+                            <TechTag>Emotion.js</TechTag>
+                            <TechTag>Next.js</TechTag>
+                            <TechTag>Node.js</TechTag>
+                        </TechStack>
+                    </ProjectCard>
+                </RoutingLink>
+
+                <RoutingLink href="/retro-page">
+                    <ProjectCard className="project-card">
+                        <ProjectIcon>🌌</ProjectIcon>
+                        <h3>Way Back Machine</h3>
+                        <p>Travel back to a long, long time ago but a slightly closer galaxy.</p>
+                        <TechStack>
+                            <TechTag>HTML</TechTag>
+                            <TechTag>React</TechTag>
+                            <TechTag>TypeScript</TechTag>
+                            <TechTag>Emotion.js</TechTag>
+                            <TechTag>Next.js</TechTag>
+                        </TechStack>
+                    </ProjectCard>
+                </RoutingLink>
+
+                <RoutingLink href="/code-learning">
                     <ProjectCard className="project-card">
                         <ProjectIcon>🌌</ProjectIcon>
                         <h3>Galactic Trade Network</h3>
@@ -72,11 +106,26 @@ export default function Projects() {
                             <TechTag>Next.js</TechTag>
                         </TechStack>
                     </ProjectCard>
-                </Link>
+                </RoutingLink>
 
                 <ProjectCard className="project-card">
                     <ProjectIcon>🤖</ProjectIcon>
                     <h3>Protocol Droid AI</h3>
+                    <p>
+                        A sophisticated chatbot trained on diplomatic protocols from across the
+                        galaxy. Capable of translating between 6 million forms of communication.
+                    </p>
+                    <TechStack>
+                        <TechTag>Python</TechTag>
+                        <TechTag>TensorFlow</TechTag>
+                        <TechTag>NLP</TechTag>
+                        <TechTag>FastAPI</TechTag>
+                    </TechStack>
+                </ProjectCard>
+
+                <ProjectCard className="project-card">
+                    <ProjectIcon>🤖</ProjectIcon>
+                    <h3>Jedi Archive</h3>
                     <p>
                         A sophisticated chatbot trained on diplomatic protocols from across the
                         galaxy. Capable of translating between 6 million forms of communication.
