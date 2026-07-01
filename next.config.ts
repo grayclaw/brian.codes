@@ -2,7 +2,13 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
     images: {
-        domains: ['art.pixilart.com'], // ✅ allow external image domain
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'art.pixilart.com',
+                pathname: '/**',
+            },
+        ],
     },
 };
 
