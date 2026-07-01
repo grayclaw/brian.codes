@@ -6,7 +6,7 @@ import { StarField } from '@components';
 
 import { useMergedPlanetData } from '@hooks';
 
-import './style.css';
+import './styles.module.css';
 
 export default function Systems() {
     const { data, error, loading, stats } = useMergedPlanetData();

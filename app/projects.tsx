@@ -108,7 +108,7 @@ export default function Projects() {
                     </ProjectCard>
                 </RoutingLink>
 
-                <ProjectCard className="project-card">
+                {/* <ProjectCard className="project-card">
                     <ProjectIcon>🤖</ProjectIcon>
                     <h3>Protocol Droid AI</h3>
                     <p>
@@ -136,7 +136,7 @@ export default function Projects() {
                         <TechTag>NLP</TechTag>
                         <TechTag>FastAPI</TechTag>
                     </TechStack>
-                </ProjectCard>
+                </ProjectCard> */}
             </ProjectGrid>
         </Section>
     );

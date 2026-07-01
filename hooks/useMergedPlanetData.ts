@@ -59,7 +59,6 @@ export default function useMergedPlanetData() {
                 const result: Result = await response.json();
 
                 if (result.success) {
-                    console.log(`result:`, result);
                     setData(result.data);
                     setStats(result.statistics);
                     setUniquesRegions(result.uniqueRegions);
