@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { ReactNode, useState } from 'react';
 
 import { ContentWrapper, Footer, Hamburger, Line, Menu } from './styles';
@@ -21,12 +22,12 @@ export default function PageContainer({ children }: PageContainerProps) {
 
             <Menu open={open} className="bg-blue-600">
                 <nav>
-                    <a href="/">Home</a>
-                    <a href="/resume">Behind the Code</a>
-                    <a href="/rebellion-dashboard">Rebellion Dashboard</a>
-                    <a href="/planetary-systems">Planetary Search</a>
-                    <a href="/retro-page">Way Back Machine (Retro Page)</a>
-                    <a href="/code-learning">Learning Code</a>
+                    <Link href="/">Home</Link>
+                    <Link href="/resume">Behind the Code</Link>
+                    <Link href="/rebellion-dashboard">Rebellion Dashboard</Link>
+                    <Link href="/planetary-systems">Planetary Search</Link>
+                    <Link href="/retro-page">Way Back Machine (Retro Page)</Link>
+                    <Link href="/code-learning">Learning Code</Link>
                 </nav>
             </Menu>
 
