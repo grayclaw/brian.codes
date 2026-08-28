@@ -5,21 +5,24 @@ import { useAppContext } from '@hooks';
 import { ContentBox } from '../../retro-page/page-styles';
 
 export default function Character() {
+    const { currentCharacter } = useAppContext();
+
+    if (!currentCharacter) {
+        return (
+            <ContentBox>
+                <p>Loading character...</p>
+            </ContentBox>
+        );
+    }
+
     const {
-        currentCharacter: {
-            name,
-            height,
-            mass,
-            hair_color: hairColor,
-            eye_color: eyeColor,
-            birth_year: birthYear,
-            // gender,
-            // homeworld,
-            // species,
-            // vehicles,
-            // starships,
-        },
-    } = useAppContext();
+        name,
+        height,
+        mass,
+        hair_color: hairColor,
+        eye_color: eyeColor,
+        birth_year: birthYear,
+    } = currentCharacter;
 
     const hasValue = (characteristic: string) => {
         return (

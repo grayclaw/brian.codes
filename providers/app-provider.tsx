@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactElement, createContext, useEffect, useMemo, useState } from 'react';
+import { ReactNode, createContext, useEffect, useMemo, useState } from 'react';
 
 import { useFetch } from '@hooks';
 
@@ -15,19 +15,13 @@ import {
 
 export const CharactersProviderContext = createContext<CharacterContextType | null>(null);
 
-interface Provider {
-    value: { characters: CharacterType[]; nextCharacterPage: string };
-    children: ReactElement[] | ReactElement;
-}
-
-export default function AppProvider({ value, children }: Provider) {
-    const { characters, nextCharacterPage } = value;
-    const [allCharacters, setAllCharacters] = useState<CharacterType[]>(() => [
-        ...characters.map((char, index) => ({ ...char, index })),
-    ]);
+export default function AppProvider({ children }: { children: ReactNode }) {
+    const [allCharacters, setAllCharacters] = useState<CharacterType[]>([]);
     const [characterNumber, setCharacterNumber] = useState<number>(0);
-    const [currentCharacter, setCurrentCharacter] = useState<CharacterType>(allCharacters[0]);
-    const [nextPage, setNextPage] = useState<string>(nextCharacterPage);
+    const [currentCharacter, setCurrentCharacter] = useState<CharacterType>(
+        allCharacters[0] ?? null,
+    );
+    const [nextPage, setNextPage] = useState<string>('');
     const [starShips] = useState<StarShipType[]>([]);
     const [vehicles] = useState([]);
     const [species] = useState([]);
@@ -75,19 +69,23 @@ export default function AppProvider({ value, children }: Provider) {
     const newValue = useMemo(() => {
         return {
             allCharacters,
-            setCharacterNumber,
+            setAllCharacters,
             characterNumber,
+            setCharacterNumber,
             currentCharacter,
+            homeWorld,
+            nextPage,
+            setNextPage,
+            species,
             starShips,
             vehicles,
-            species,
-            homeWorld,
         };
     }, [
         allCharacters,
         setCharacterNumber,
         characterNumber,
         currentCharacter,
+        nextPage,
         starShips,
         vehicles,
         species,
@@ -100,21 +98,3 @@ export default function AppProvider({ value, children }: Provider) {
         </CharactersProviderContext.Provider>
     );
 }
-
-// const fetchUrls = async (urls: string[]) => {
-//     try {
-//         const fetchPromises = urls.map(async (url) => {
-//             const response = await fetch(url);
-//             if (!response.ok) {
-//                 throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
-//             }
-//             return response.json();
-//         });
-
-//         const results = await Promise.all(fetchPromises);
-//         return results;
-//     } catch (error) {
-//         console.error('Error fetching URLs:', error);
-//         throw error;
-//     }
-// };

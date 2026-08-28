@@ -11,9 +11,12 @@ export type BreakpointType = {
 
 export type CharacterContextType = {
     allCharacters: CharacterType[];
-    setCharacterNumber: (number: number) => void;
+    setAllCharacters: React.Dispatch<React.SetStateAction<CharacterType[]>>;
     characterNumber: number;
-    currentCharacter: CharacterType;
+    setCharacterNumber: React.Dispatch<React.SetStateAction<number>>;
+    currentCharacter?: CharacterType;
+    nextPage: string;
+    setNextPage: React.Dispatch<React.SetStateAction<string>>;
     starShips: StarShipType[] | [];
     vehicles: VehicleType[] | [];
     species: SpeciesType[] | [];
